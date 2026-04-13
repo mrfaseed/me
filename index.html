@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,15 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <!-- Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0"
+        rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="/dist/output.css">
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -74,9 +79,13 @@
         /* Ambient Glow Background */
         .ambient-glow {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none; z-index: -1;
-            background: 
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background:
                 radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 85% 30%, rgba(20, 184, 166, 0.08) 0%, transparent 50%);
         }
@@ -91,12 +100,15 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .bento-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06), transparent 40%);
             z-index: 1;
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -110,7 +122,7 @@
         .bento-card:hover {
             transform: translateY(-4px);
             border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
         }
 
         .bento-content {
@@ -122,13 +134,16 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #0a0a0c;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #23232a;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #3f3f46;
         }
@@ -139,6 +154,7 @@
             transform: translateY(30px) scale(0.98);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0) scale(1);
@@ -153,30 +169,55 @@
 
         /* ===== CREATIVE HAMBURGER BUTTON ===== */
         @keyframes borderSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.15); }
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.15);
+            }
         }
 
         .hamburger {
             display: none;
+            flex: 0 0 38px !important;
+            /* Extremely strict flex basis */
             justify-content: center;
             align-items: center;
-            width: 38px;
-            height: 38px;
+            width: 38px !important;
+            height: 38px !important;
+            min-width: 38px !important;
+            min-height: 38px !important;
+            max-width: 38px !important;
+            max-height: 38px !important;
+            box-sizing: border-box !important;
+            appearance: none;
+            -webkit-appearance: none;
             cursor: pointer;
             z-index: 60;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
-            padding: 0;
+            padding: 0 !important;
+            margin: 0 !important;
             position: relative;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             -webkit-tap-highlight-color: transparent;
-            flex-shrink: 0;
+            overflow: visible;
         }
 
         /* Animated gradient border ring */
@@ -191,6 +232,7 @@
             transition: opacity 0.4s ease;
             animation: borderSpin 3s linear infinite;
         }
+
         /* Inner mask to create border effect */
         .hamburger::after {
             content: '';
@@ -201,9 +243,18 @@
             z-index: -1;
             transition: background 0.4s ease;
         }
-        .hamburger:active { transform: scale(0.92); }
-        .hamburger.active::before { opacity: 1; }
-        .hamburger.active::after { background: rgba(10, 10, 12, 0.85); }
+
+        .hamburger:active {
+            transform: scale(0.92);
+        }
+
+        .hamburger.active::before {
+            opacity: 1;
+        }
+
+        .hamburger.active::after {
+            background: rgba(10, 10, 12, 0.85);
+        }
 
         /* Glow halo behind button when active */
         .hamburger-glow {
@@ -211,14 +262,17 @@
             width: 38px;
             height: 38px;
             border-radius: 12px;
-            background: radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent 70%);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease;
             animation: pulseGlow 2s ease-in-out infinite;
             z-index: -2;
         }
-        .hamburger.active .hamburger-glow { opacity: 1; }
+
+        .hamburger.active .hamburger-glow {
+            opacity: 1;
+        }
 
         /* The three lines */
         .hamburger .line-group {
@@ -230,6 +284,7 @@
             position: relative;
             z-index: 2;
         }
+
         .hamburger .line {
             height: 2px;
             border-radius: 2px;
@@ -237,9 +292,20 @@
             transition: all 0.5s cubic-bezier(0.7, 0, 0.2, 1);
             transform-origin: center center;
         }
-        .hamburger .line-1 { width: 18px; }
-        .hamburger .line-2 { width: 13px; transition-delay: 0.05s; }
-        .hamburger .line-3 { width: 8px; transition-delay: 0.1s; }
+
+        .hamburger .line-1 {
+            width: 18px;
+        }
+
+        .hamburger .line-2 {
+            width: 13px;
+            transition-delay: 0.05s;
+        }
+
+        .hamburger .line-3 {
+            width: 8px;
+            transition-delay: 0.1s;
+        }
 
         /* Active morph to elegant X with gradient colors */
         .hamburger.active .line-1 {
@@ -247,11 +313,13 @@
             transform: translateY(6px) rotate(45deg);
             background: linear-gradient(90deg, #3b82f6, #a855f7);
         }
+
         .hamburger.active .line-2 {
             width: 0;
             opacity: 0;
             transform: translateX(6px);
         }
+
         .hamburger.active .line-3 {
             width: 18px;
             transform: translateY(-6px) rotate(-45deg);
@@ -267,6 +335,7 @@
             pointer-events: none;
             transition: visibility 0s 0.6s;
         }
+
         .mobile-nav-overlay.open {
             visibility: visible;
             pointer-events: auto;
@@ -281,6 +350,7 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
+
         .mobile-nav-overlay.open .mobile-nav-backdrop {
             opacity: 1;
         }
@@ -301,6 +371,7 @@
             padding: 80px 32px 40px;
             overflow: hidden;
         }
+
         .mobile-nav-overlay.open .mobile-nav-panel {
             transform: scale(1);
             opacity: 1;
@@ -315,17 +386,26 @@
             opacity: 0;
             transition: opacity 0.6s ease 0.2s;
         }
-        .mobile-nav-overlay.open .mobile-nav-panel .orb { opacity: 1; }
+
+        .mobile-nav-overlay.open .mobile-nav-panel .orb {
+            opacity: 1;
+        }
+
         .mobile-nav-panel .orb-1 {
-            width: 300px; height: 300px;
+            width: 300px;
+            height: 300px;
             background: rgba(59, 130, 246, 0.12);
-            top: -50px; left: -80px;
+            top: -50px;
+            left: -80px;
             animation: driftLeft 12s ease-in-out infinite;
         }
+
         .mobile-nav-panel .orb-2 {
-            width: 250px; height: 250px;
+            width: 250px;
+            height: 250px;
             background: rgba(168, 85, 247, 0.1);
-            bottom: -40px; right: -60px;
+            bottom: -40px;
+            right: -60px;
             animation: driftRight 14s ease-in-out infinite;
         }
 
@@ -333,12 +413,15 @@
         .mobile-nav-panel::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 3px;
             background: linear-gradient(90deg, #3b82f6, #14b8a6, #a855f7);
             opacity: 0;
             transition: opacity 0.5s ease 0.3s;
         }
+
         .mobile-nav-overlay.open .mobile-nav-panel::before {
             opacity: 1;
         }
@@ -354,6 +437,7 @@
             position: relative;
             z-index: 2;
         }
+
         .mobile-nav-link {
             display: flex;
             align-items: center;
@@ -363,7 +447,7 @@
             font-size: 2rem;
             font-weight: 700;
             font-family: 'Outfit', sans-serif;
-            color: rgba(248,250,252,0.5);
+            color: rgba(248, 250, 252, 0.5);
             text-decoration: none;
             padding: 18px 0;
             transform: translateY(30px);
@@ -372,15 +456,17 @@
             position: relative;
             letter-spacing: -0.02em;
         }
+
         .mobile-nav-link:hover,
         .mobile-nav-link:active {
             color: #ffffff;
         }
+
         /* Number prefix */
         .mobile-nav-link .nav-num {
             font-size: 0.75rem;
             font-family: 'JetBrains Mono', monospace;
-            color: rgba(59,130,246,0.5);
+            color: rgba(59, 130, 246, 0.5);
             font-weight: 400;
             position: absolute;
             left: 0;
@@ -392,10 +478,22 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .mobile-nav-overlay.open .mobile-nav-link:nth-child(1) { transition-delay: 0.12s; }
-        .mobile-nav-overlay.open .mobile-nav-link:nth-child(2) { transition-delay: 0.18s; }
-        .mobile-nav-overlay.open .mobile-nav-link:nth-child(3) { transition-delay: 0.24s; }
-        .mobile-nav-overlay.open .mobile-nav-link:nth-child(4) { transition-delay: 0.30s; }
+
+        .mobile-nav-overlay.open .mobile-nav-link:nth-child(1) {
+            transition-delay: 0.12s;
+        }
+
+        .mobile-nav-overlay.open .mobile-nav-link:nth-child(2) {
+            transition-delay: 0.18s;
+        }
+
+        .mobile-nav-overlay.open .mobile-nav-link:nth-child(3) {
+            transition-delay: 0.24s;
+        }
+
+        .mobile-nav-overlay.open .mobile-nav-link:nth-child(4) {
+            transition-delay: 0.30s;
+        }
 
         /* Active link underline indicator */
         .mobile-nav-link::after {
@@ -406,9 +504,10 @@
             transform: translateX(-50%);
             width: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent);
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
             transition: width 0.3s ease;
         }
+
         .mobile-nav-link:active::after {
             width: 60%;
         }
@@ -427,6 +526,7 @@
             position: relative;
             z-index: 2;
         }
+
         .mobile-nav-overlay.open .mobile-nav-cta {
             opacity: 1;
             transform: translateY(0);
@@ -444,83 +544,82 @@
             position: relative;
             z-index: 2;
         }
+
         .mobile-nav-overlay.open .mobile-nav-social {
             opacity: 1;
             transform: translateY(0);
         }
+
         .mobile-nav-social a {
-            color: rgba(255,255,255,0.3);
+            color: rgba(255, 255, 255, 0.3);
             font-size: 0.8rem;
             font-family: 'JetBrains Mono', monospace;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        .mobile-nav-social a:hover { color: #fff; }
+
+        .mobile-nav-social a:hover {
+            color: #fff;
+        }
 
         /* ===== MOBILE RESPONSIVE ===== */
         @media (max-width: 767px) {
             .hamburger {
                 display: flex;
             }
+
             .nav-divider-desktop,
             .nav-resume-desktop {
                 display: none !important;
             }
-            .floating-nav {
-                padding: 10px 16px;
-                width: 92%;
-                gap: 0;
-                justify-content: space-between;
-                top: 12px;
-                border-radius: 16px;
-            }
         }
     </style>
 </head>
+
 <body class="antialiased selection:bg-primary/30 selection:text-white">
 
     <div class="ambient-glow"></div>
 
     <!-- Navigation Island -->
-  <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 floating-nav px-10 py-4 rounded-full flex items-center gap-8 shadow-2xl max-w-4xl w-[90%] backdrop-blur-md">
-    
-    <!-- Logo -->
-    <a href="#home" class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
-    Faseed / Android
-</a>
+    <nav
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 floating-nav px-4 md:px-10 py-3 md:py-4 rounded-2xl md:rounded-full flex items-center justify-between md:justify-start gap-0 md:gap-8 shadow-2xl max-w-4xl w-[92%] md:w-[90%] backdrop-blur-md">
 
-    <!-- Divider -->
-    <div class="w-px h-5 bg-surfaceBorder nav-divider-desktop"></div>
-
-    <!-- Nav Links -->
-    <div class="flex gap-6 text-sm font-medium text-textMuted hidden md:flex">
-        <a href="#projects" class="hover:text-white transition-colors">Work/projects</a>
-        <a href="#about" class="hover:text-white transition-colors">About</a>
-        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-    </div>
-
-    <!-- Right Actions -->
-    <div class="ml-auto flex items-center gap-3">
-        
-        <!-- Resume Download -->
-        <a href="/resume.pdf" download 
-           class="nav-resume-desktop border border-surfaceBorder text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
-            Download Resume
+        <!-- Logo -->
+        <a href="#home" class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
+            Faseed / Android
         </a>
 
-    </div>
+        <!-- Divider -->
+        <div class="w-px h-5 bg-surfaceBorder nav-divider-desktop"></div>
 
-    <!-- Hamburger Button (Mobile Only) -->
-    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-        <div class="hamburger-glow"></div>
-        <div class="line-group">
-            <div class="line line-1"></div>
-            <div class="line line-2"></div>
-            <div class="line line-3"></div>
+        <!-- Nav Links -->
+        <div class="flex gap-6 text-sm font-medium text-textMuted hidden md:flex">
+            <a href="#projects" class="hover:text-white transition-colors">Work/projects</a>
+            <a href="#about" class="hover:text-white transition-colors">About</a>
+            <a href="#contact" class="hover:text-white transition-colors">Contact</a>
         </div>
-    </button>
 
-</nav>
+        <!-- Right Actions -->
+        <div class="ml-auto flex items-center gap-3">
+
+            <!-- Resume -->
+            <a href="/resume.pdf" download
+                class="nav-resume-desktop border border-surfaceBorder text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
+                Download Resume
+            </a>
+
+            <!-- Hamburger -->
+            <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+                <div class="hamburger-glow"></div>
+                <div class="line-group">
+                    <div class="line line-1"></div>
+                    <div class="line line-2"></div>
+                    <div class="line line-3"></div>
+                </div>
+            </button>
+
+        </div>
+    </nav>
 
     <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav-overlay" id="mobileNav">
@@ -538,10 +637,14 @@
             </div>
 
             <div class="mobile-nav-cta">
-                <a href="mailto:hello@faseed.dev" class="bg-white text-black px-6 py-3 rounded-full font-bold text-center flex items-center justify-center gap-2" style="font-family:'Outfit',sans-serif;">
+                <a href="mailto:hello@faseed.dev"
+                    class="bg-white text-black px-6 py-3 rounded-full font-bold text-center flex items-center justify-center gap-2"
+                    style="font-family:'Outfit',sans-serif;">
                     <span class="material-symbols-rounded">mail</span> Email Me
                 </a>
-                <a href="/resume.pdf" download class="border border-white/20 text-white px-6 py-3 rounded-full font-bold text-center flex items-center justify-center gap-2" style="font-family:'Outfit',sans-serif;">
+                <a href="/resume.pdf" download
+                    class="border border-white/20 text-white px-6 py-3 rounded-full font-bold text-center flex items-center justify-center gap-2"
+                    style="font-family:'Outfit',sans-serif;">
                     <span class="material-symbols-rounded">description</span> Resume
                 </a>
             </div>
@@ -555,67 +658,79 @@
     </div>
 
     <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 space-y-24">
-        
+
         <!-- Awesome Typographic Hero Section -->
         <section id="home" class="min-h-[75vh] flex flex-col justify-center relative reveal mt-[-2rem] md:mt-[-4rem]">
-            
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none mix-blend-screen -z-10"></div>
-            
+
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none mix-blend-screen -z-10">
+            </div>
+
             <!-- Left Floating Background Icons -->
-            <div class="hidden lg:flex absolute left-[2%] xl:left-[8%] top-[15%] opacity-10 animate-drift-left pointer-events-none text-white select-none">
+            <div
+                class="hidden lg:flex absolute left-[2%] xl:left-[8%] top-[15%] opacity-10 animate-drift-left pointer-events-none text-white select-none">
                 <span class="material-symbols-rounded text-[90px]">android</span>
             </div>
-            <div class="hidden lg:flex absolute left-[8%] xl:left-[12%] top-[60%] opacity-5 animate-drift-left-slow pointer-events-none text-white select-none">
+            <div
+                class="hidden lg:flex absolute left-[8%] xl:left-[12%] top-[60%] opacity-5 animate-drift-left-slow pointer-events-none text-white select-none">
                 <span class="material-symbols-rounded text-[70px]">smartphone</span>
             </div>
-            <div class="hidden lg:flex absolute left-[1%] xl:left-[4%] top-[80%] opacity-[0.07] animate-drift-left pointer-events-none text-white select-none">
+            <div
+                class="hidden lg:flex absolute left-[1%] xl:left-[4%] top-[80%] opacity-[0.07] animate-drift-left pointer-events-none text-white select-none">
                 <span class="material-symbols-rounded text-[110px]">code</span>
             </div>
 
             <!-- Right Floating Background Icons -->
-            <div class="hidden lg:flex absolute right-[5%] xl:right-[10%] top-[25%] opacity-[0.08] animate-drift-right pointer-events-none text-white select-none">
+            <div
+                class="hidden lg:flex absolute right-[5%] xl:right-[10%] top-[25%] opacity-[0.08] animate-drift-right pointer-events-none text-white select-none">
                 <span class="material-symbols-rounded text-[100px]">widgets</span>
             </div>
-            <div class="hidden lg:flex absolute right-[10%] xl:right-[15%] top-[65%] opacity-[0.06] animate-drift-right-slow pointer-events-none text-white select-none">
+            <div
+                class="hidden lg:flex absolute right-[10%] xl:right-[15%] top-[65%] opacity-[0.06] animate-drift-right-slow pointer-events-none text-white select-none">
                 <span class="material-symbols-rounded text-[80px]">developer_board</span>
             </div>
-            <div class="hidden lg:flex absolute right-[2%] xl:right-[6%] top-[85%] opacity-5 animate-drift-right pointer-events-none text-white select-none">
+            <div
+                class="hidden lg:flex absolute right-[2%] xl:right-[6%] top-[85%] opacity-5 animate-drift-right pointer-events-none text-white select-none">
                 <span class="material-symbols-rounded text-[60px]">devices</span>
             </div>
 
             <div class="relative z-10 flex flex-col items-center text-center space-y-8 md:space-y-10">
-                
-                
+
+
 
                 <div class="space-y-2 md:space-y-4 lg:mt-20">
-                    <h1 class="text-5xl md:text-8xl lg:text-[7rem] font-bold tracking-tight leading-[1] md:leading-[0.9] text-white">
+                    <h1
+                        class="text-5xl md:text-8xl lg:text-[7rem] font-bold tracking-tight leading-[1] md:leading-[0.9] text-white">
                         Hi, I'm Faseed.
                     </h1>
-                    <h2 class="text-4xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1] md:leading-[0.9] text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent pb-2 md:pb-4">
+                    <h2
+                        class="text-4xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1] md:leading-[0.9] text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent pb-2 md:pb-4">
                         I build mobile apps.
                     </h2>
                 </div>
 
                 <p class="text-textMuted text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-4">
-                    I design and build smooth Android apps with real-world performance 
+                    I design and build smooth Android apps with real-world performance
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6 pt-4">
-                    <a href="#projects" class="bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                    <a href="#projects"
+                        class="bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                         See what I’ve built <span class="material-symbols-rounded">arrow_downward</span>
                     </a>
-                    <a href="https://github.com" target="_blank" class="text-white hover:text-accent font-bold transition-colors flex items-center gap-2">
+                    <a href="https://github.com" target="_blank"
+                        class="text-white hover:text-accent font-bold transition-colors flex items-center gap-2">
                         View GitHub <span class="material-symbols-rounded text-sm">open_in_new</span>
                     </a>
                 </div>
-              <p class="text-textMuted/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed px-4">
-Real apps. Used by real people
-</p>
-<span class="text-textMuted/50 text-xl animate-[bounce_2s_infinite]">
-  ↓
-</span>
+                <p class="text-textMuted/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed px-4">
+                    Real apps. Used by real people
+                </p>
+                <span class="text-textMuted/50 text-xl animate-[bounce_2s_infinite]">
+                    ↓
+                </span>
             </div>
-            
+
             <!-- Scroll Indicator
             <div class="hidden md:flex absolute bottom-0 left-1/2 -translate-x-1/2 flex-col items-center gap-2 animate-bounce opacity-50">
                 <span class="material-symbols-rounded text-white">south</span>
@@ -630,19 +745,22 @@ Real apps. Used by real people
                     <h2 class="text-4xl lg:text-5xl font-bold">Featured Projects.</h2>
                     <p class="text-textMuted mt-2 text-lg">Apps I've built while exploring Android Dev.</p>
                 </div>
-                <a href="#" class="hidden md:flex items-center gap-2 text-primary font-bold hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                <a href="#"
+                    class="hidden md:flex items-center gap-2 text-primary font-bold hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/10">
                     View GitHub <span class="material-symbols-rounded text-lg">arrow_outward</span>
                 </a>
             </div>
 
             <!-- Project Grid -->
             <div class="grid md:grid-cols-2 gap-6">
-                
+
                 <!-- Project 1 -->
                 <div class="bento-card flex flex-col h-[450px] group reveal">
-                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                    <div
+                        class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
                         <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
-                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">task_alt</span>
+                        <span
+                            class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">task_alt</span>
                     </div>
                     <div class="p-8 bento-content flex flex-col flex-1">
                         <div class="flex justify-between items-start mb-4">
@@ -650,23 +768,29 @@ Real apps. Used by real people
                                 <h3 class="text-2xl font-bold text-white">TaskFlow App</h3>
                                 <p class="text-textMuted mt-1">Personal Productivity & Habit Tracker</p>
                             </div>
-                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all">
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all">
                                 <span class="material-symbols-rounded">arrow_outward</span>
                             </a>
                         </div>
                         <div class="mt-auto flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-primary">Kotlin</span>
-                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Room Database</span>
-                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">MVVM</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-primary">Kotlin</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Room
+                                Database</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">MVVM</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
                 <div class="bento-card flex flex-col h-[450px] group reveal" style="transition-delay: 100ms;">
-                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                    <div
+                        class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
                         <div class="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-transparent"></div>
-                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">partly_cloudy_day</span>
+                        <span
+                            class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">partly_cloudy_day</span>
                     </div>
                     <div class="p-8 bento-content flex flex-col flex-1">
                         <div class="flex justify-between items-start mb-4">
@@ -674,22 +798,29 @@ Real apps. Used by real people
                                 <h3 class="text-2xl font-bold text-white">Weather Cast</h3>
                                 <p class="text-textMuted mt-1">Real-time dynamic weather forecasting</p>
                             </div>
-                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-secondary group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-secondary group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
                                 <span class="material-symbols-rounded">arrow_outward</span>
                             </a>
                         </div>
                         <div class="mt-auto flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-secondary">Jetpack Compose</span>
-                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Retrofit APIs</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-secondary">Jetpack
+                                Compose</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Retrofit
+                                APIs</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
                 <div class="bento-card flex flex-col h-[450px] group reveal">
-                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                    <div
+                        class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
                         <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent"></div>
-                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">forum</span>
+                        <span
+                            class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">forum</span>
                     </div>
                     <div class="p-8 bento-content flex flex-col flex-1">
                         <div class="flex justify-between items-start mb-4">
@@ -697,25 +828,33 @@ Real apps. Used by real people
                                 <h3 class="text-2xl font-bold text-white">UniChat</h3>
                                 <p class="text-textMuted mt-1">Campus messaging platform prototype</p>
                             </div>
-                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all">
+                            <a href="#"
+                                class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all">
                                 <span class="material-symbols-rounded">arrow_outward</span>
                             </a>
                         </div>
                         <div class="mt-auto flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-accent">Firebase Auth</span>
-                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Firestore</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-accent">Firebase
+                                Auth</span>
+                            <span
+                                class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Firestore</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Open Source / More -->
-                <div class="bento-card flex flex-col items-center justify-center h-[450px] text-center p-8 group reveal hover:bg-surfaceBorder/30" style="transition-delay: 100ms;">
-                    <div class="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div class="bento-card flex flex-col items-center justify-center h-[450px] text-center p-8 group reveal hover:bg-surfaceBorder/30"
+                    style="transition-delay: 100ms;">
+                    <div
+                        class="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <span class="material-symbols-rounded text-4xl">code</span>
                     </div>
                     <h3 class="text-2xl font-bold text-white">More on GitHub</h3>
-                    <p class="text-textMuted mt-2 mb-8 max-w-sm">I am constantly pushing experiments, university assignments, and practice apps here.</p>
-                    <a href="#" class="bg-white text-black px-6 py-3 rounded-full font-bold hover:shadow-xl transition-all flex items-center gap-2">
+                    <p class="text-textMuted mt-2 mb-8 max-w-sm">I am constantly pushing experiments, university
+                        assignments, and practice apps here.</p>
+                    <a href="#"
+                        class="bg-white text-black px-6 py-3 rounded-full font-bold hover:shadow-xl transition-all flex items-center gap-2">
                         View Repositories <span class="material-symbols-rounded">arrow_forward</span>
                     </a>
                 </div>
@@ -725,9 +864,11 @@ Real apps. Used by real people
 
         <!-- About / Education Bento -->
         <section id="about" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <div class="bento-card col-span-1 p-8 text-center flex flex-col items-center justify-center space-y-4 reveal">
-                <div class="w-16 h-16 bg-surfaceBorder rounded-2xl flex items-center justify-center rotate-3 border border-white/10">
+
+            <div
+                class="bento-card col-span-1 p-8 text-center flex flex-col items-center justify-center space-y-4 reveal">
+                <div
+                    class="w-16 h-16 bg-surfaceBorder rounded-2xl flex items-center justify-center rotate-3 border border-white/10">
                     <span class="material-symbols-rounded text-4xl text-secondary">school</span>
                 </div>
                 <div>
@@ -737,63 +878,89 @@ Real apps. Used by real people
                 </div>
             </div>
 
-            <div class="bento-card md:col-span-2 p-8 md:p-12 flex flex-col justify-center space-y-4 reveal" style="transition-delay: 100ms;">
+            <div class="bento-card md:col-span-2 p-8 md:p-12 flex flex-col justify-center space-y-4 reveal"
+                style="transition-delay: 100ms;">
                 <h3 class="text-2xl font-bold flex items-center gap-3 text-white">
                     <span class="material-symbols-rounded text-primary">person_search</span> Seeking Opportunities
                 </h3>
                 <p class="text-textMuted leading-relaxed">
-                    As a student, I am in a state of rapid learning. I may not have years of enterprise experience, but I am incredibly fast at picking up new frameworks, reading documentation, and building functional software from scratch.
+                    As a student, I am in a state of rapid learning. I may not have years of enterprise experience, but
+                    I am incredibly fast at picking up new frameworks, reading documentation, and building functional
+                    software from scratch.
                 </p>
                 <p class="text-textMuted leading-relaxed">
-                    I am actively seeking <strong class="text-white font-medium">junior roles and internships</strong> where I can write clean code, learn from experienced mentors, and contribute to real-world products.
+                    I am actively seeking <strong class="text-white font-medium">junior roles and internships</strong>
+                    where I can write clean code, learn from experienced mentors, and contribute to real-world products.
                 </p>
             </div>
 
         </section>
 
         <!-- Call to Action -->
-        <section id="contact" class="bento-card !bg-gradient-to-br from-primary/20 via-background to-secondary/20 p-12 md:p-24 text-center space-y-8 reveal relative overflow-hidden overflow-hidden border border-primary/20">
+        <section id="contact"
+            class="bento-card !bg-gradient-to-br from-primary/20 via-background to-secondary/20 p-12 md:p-24 text-center space-y-8 reveal relative overflow-hidden overflow-hidden border border-primary/20">
             <!-- Decorative blur blobs -->
-            <div class="absolute top-0 left-0 w-64 h-64 bg-primary/30 rounded-full blur-[100px] pointer-events-none"></div>
-            <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/30 rounded-full blur-[100px] pointer-events-none"></div>
-            
-            <h2 class="text-5xl md:text-7xl font-bold tracking-tight relative z-10 text-white">Let's build <br/>something cool.</h2>
+            <div class="absolute top-0 left-0 w-64 h-64 bg-primary/30 rounded-full blur-[100px] pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/30 rounded-full blur-[100px] pointer-events-none">
+            </div>
+
+            <h2 class="text-5xl md:text-7xl font-bold tracking-tight relative z-10 text-white">Let's build
+                <br />something cool.</h2>
             <p class="text-lg text-textMuted max-w-xl mx-auto relative z-10">
                 Are you looking for a passionate and dedicated junior developer for your team? Let's connect.
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 relative z-10">
-                <a href="mailto:hello@faseed.dev" class="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex justify-center items-center gap-2">
+                <a href="mailto:hello@faseed.dev"
+                    class="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex justify-center items-center gap-2">
                     <span class="material-symbols-rounded">mail</span> Email Me
                 </a>
-                <a href="#" class="w-full sm:w-auto bg-black/50 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors flex justify-center items-center gap-2 border border-white/20 backdrop-blur-md">
+                <a href="#"
+                    class="w-full sm:w-auto bg-black/50 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors flex justify-center items-center gap-2 border border-white/20 backdrop-blur-md">
                     <span class="material-symbols-rounded">description</span> Download Resume
                 </a>
             </div>
         </section>
-      <!-- Focus / Skills Ribbon -->
-        <div class="bento-card p-6 flex flex-col justify-center overflow-hidden reveal w-full z-20 relative bg-[#121217]/80">
+        <!-- Focus / Skills Ribbon -->
+        <div
+            class="bento-card p-6 flex flex-col justify-center overflow-hidden reveal w-full z-20 relative bg-[#121217]/80">
             <div class="flex overflow-hidden relative w-full">
                 <div class="flex gap-12 whitespace-nowrap animate-scroll items-center">
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Kotlin</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Kotlin</span>
                     <span class="material-symbols-rounded text-primary">trip_origin</span>
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Jetpack Compose</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Jetpack
+                        Compose</span>
                     <span class="material-symbols-rounded text-secondary">trip_origin</span>
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Android Studio</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Android
+                        Studio</span>
                     <span class="material-symbols-rounded text-accent">trip_origin</span>
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Firebase</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Firebase</span>
                     <span class="material-symbols-rounded text-primary">trip_origin</span>
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">RoomDB</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">RoomDB</span>
                     <span class="material-symbols-rounded text-secondary">trip_origin</span>
                     <!-- Duplicate for infinite scroll -->
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Kotlin</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Kotlin</span>
                     <span class="material-symbols-rounded text-primary">trip_origin</span>
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Jetpack Compose</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Jetpack
+                        Compose</span>
                     <span class="material-symbols-rounded text-secondary">trip_origin</span>
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Android Studio</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Android
+                        Studio</span>
                     <span class="material-symbols-rounded text-accent">trip_origin</span>
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Firebase</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Firebase</span>
                     <span class="material-symbols-rounded text-primary">trip_origin</span>
-                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">RoomDB</span>
+                    <span
+                        class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">RoomDB</span>
                 </div>
             </div>
         </div>
@@ -869,4 +1036,5 @@ Real apps. Used by real people
         });
     </script>
 </body>
+
 </html>
