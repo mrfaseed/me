@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faseed - Android Developer</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        background: '#0a0a0c',
+                        surface: '#121217',
+                        surfaceBorder: '#23232a',
+                        primary: '#eab308', // Indigo
+                        secondary: '#d946ef', // Violet
+                        accent: '#eab308', // Cyan
+                        textMain: '#f8fafc',
+                        textMuted: '#94a3b8'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'scroll': 'scroll 20s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'drift-left': 'driftLeft 15s ease-in-out infinite',
+                        'drift-right': 'driftRight 18s ease-in-out infinite',
+                        'drift-left-slow': 'driftLeft 22s ease-in-out infinite reverse',
+                        'drift-right-slow': 'driftRight 25s ease-in-out infinite reverse',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        driftLeft: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) rotate(0deg)' },
+                            '33%': { transform: 'translate(10px, -15px) rotate(2deg)' },
+                            '66%': { transform: 'translate(-5px, 15px) rotate(-1deg)' },
+                        },
+                        driftRight: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) rotate(0deg)' },
+                            '33%': { transform: 'translate(-15px, 10px) rotate(-2deg)' },
+                            '66%': { transform: 'translate(10px, -10px) rotate(1deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow Background */
+        .ambient-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(234, 179, 8, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(217, 70, 239, 0.08) 0%, transparent 50%);
+        }
+
+        /* Bento Grid Hover Effects */
+        .bento-card {
+            background: rgba(18, 18, 23, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid #23232a;
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .bento-card:hover::before {
+            opacity: 1;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(234, 179, 8, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+
+        .bento-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #23232a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Floating Nav */
+        .floating-nav {
+            background: rgba(18, 18, 23, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary/30 selection:text-white">
+
+    <div class="ambient-glow"></div>
+
+    <!-- Navigation Island -->
+  <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 floating-nav px-10 py-4 rounded-full flex items-center gap-8 shadow-2xl max-w-4xl w-[90%] backdrop-blur-md">
+    
+    <!-- Logo -->
+    <a href="#home" class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
+    Faseed / Android
+</a>
+
+    <!-- Divider -->
+    <div class="w-px h-5 bg-surfaceBorder"></div>
+
+    <!-- Nav Links -->
+    <div class="flex gap-6 text-sm font-medium text-textMuted hidden md:flex">
+        <a href="#projects" class="hover:text-white transition-colors">Work/projects</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="ml-auto flex items-center gap-3">
+        
+        <!-- Resume Download -->
+        <a href="/resume.pdf" download 
+           class="border border-surfaceBorder text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
+            Download Resume
+        </a>
+
+    </div>
+
+</nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 space-y-24">
+        
+        <!-- Awesome Typographic Hero Section -->
+        <section id="home" class="min-h-[75vh] flex flex-col justify-center relative reveal mt-[-2rem] md:mt-[-4rem]">
+            
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none mix-blend-screen -z-10"></div>
+            
+            <!-- Left Floating Background Icons -->
+            <div class="hidden lg:flex absolute left-[2%] xl:left-[8%] top-[15%] opacity-10 animate-drift-left pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[90px]">android</span>
+            </div>
+            <div class="hidden lg:flex absolute left-[8%] xl:left-[12%] top-[60%] opacity-5 animate-drift-left-slow pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[70px]">smartphone</span>
+            </div>
+            <div class="hidden lg:flex absolute left-[1%] xl:left-[4%] top-[80%] opacity-[0.07] animate-drift-left pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[110px]">code</span>
+            </div>
+
+            <!-- Right Floating Background Icons -->
+            <div class="hidden lg:flex absolute right-[5%] xl:right-[10%] top-[25%] opacity-[0.08] animate-drift-right pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[100px]">widgets</span>
+            </div>
+            <div class="hidden lg:flex absolute right-[10%] xl:right-[15%] top-[65%] opacity-[0.06] animate-drift-right-slow pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[80px]">developer_board</span>
+            </div>
+            <div class="hidden lg:flex absolute right-[2%] xl:right-[6%] top-[85%] opacity-5 animate-drift-right pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[60px]">devices</span>
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center text-center space-y-8 md:space-y-10">
+                
+                
+
+                <div class="space-y-2 md:space-y-4 lg:mt-20">
+                    <h1 class="text-5xl md:text-8xl lg:text-[7rem] font-bold tracking-tight leading-[1] md:leading-[0.9] text-white">
+                        Hi, I'm Faseed.
+                    </h1>
+                    <h2 class="text-4xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1] md:leading-[0.9] text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent pb-2 md:pb-4">
+                        I build mobile apps.
+                    </h2>
+                </div>
+
+                <p class="text-textMuted text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-4">
+                    I design and build smooth Android apps with real-world performance 
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6 pt-4">
+                    <a href="#projects" class="bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                        See what I’ve built <span class="material-symbols-rounded">arrow_downward</span>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="text-white hover:text-accent font-bold transition-colors flex items-center gap-2">
+                        View GitHub <span class="material-symbols-rounded text-sm">open_in_new</span>
+                    </a>
+                </div>
+              <p class="text-textMuted/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed px-4">
+Real apps. Used by real people
+</p>
+<span class="text-textMuted/50 text-xl animate-[bounce_2s_infinite]">
+  ↓
+</span>
+            </div>
+            
+            <!-- Scroll Indicator
+            <div class="hidden md:flex absolute bottom-0 left-1/2 -translate-x-1/2 flex-col items-center gap-2 animate-bounce opacity-50">
+                <span class="material-symbols-rounded text-white">south</span>
+            </div>
+             -->
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects" class="space-y-12 pt-12">
+            <div class="flex items-end justify-between reveal">
+                <div>
+                    <h2 class="text-4xl lg:text-5xl font-bold">Featured Projects.</h2>
+                    <p class="text-textMuted mt-2 text-lg">Apps I've built while exploring Android Dev.</p>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-2 text-primary font-bold hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                    View GitHub <span class="material-symbols-rounded text-lg">arrow_outward</span>
+                </a>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="grid md:grid-cols-2 gap-6">
+                
+                <!-- Project 1 -->
+                <div class="bento-card flex flex-col h-[450px] group reveal">
+                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">task_alt</span>
+                    </div>
+                    <div class="p-8 bento-content flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">TaskFlow App</h3>
+                                <p class="text-textMuted mt-1">Personal Productivity & Habit Tracker</p>
+                            </div>
+                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all">
+                                <span class="material-symbols-rounded">arrow_outward</span>
+                            </a>
+                        </div>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-primary">Kotlin</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Room Database</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">MVVM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bento-card flex flex-col h-[450px] group reveal" style="transition-delay: 100ms;">
+                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-transparent"></div>
+                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">partly_cloudy_day</span>
+                    </div>
+                    <div class="p-8 bento-content flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Weather Cast</h3>
+                                <p class="text-textMuted mt-1">Real-time dynamic weather forecasting</p>
+                            </div>
+                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-secondary group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
+                                <span class="material-symbols-rounded">arrow_outward</span>
+                            </a>
+                        </div>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-secondary">Jetpack Compose</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Retrofit APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bento-card flex flex-col h-[450px] group reveal">
+                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent"></div>
+                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">forum</span>
+                    </div>
+                    <div class="p-8 bento-content flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">UniChat</h3>
+                                <p class="text-textMuted mt-1">Campus messaging platform prototype</p>
+                            </div>
+                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all">
+                                <span class="material-symbols-rounded">arrow_outward</span>
+                            </a>
+                        </div>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-accent">Firebase Auth</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Firestore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open Source / More -->
+                <div class="bento-card flex flex-col items-center justify-center h-[450px] text-center p-8 group reveal hover:bg-surfaceBorder/30" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-rounded text-4xl">code</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">More on GitHub</h3>
+                    <p class="text-textMuted mt-2 mb-8 max-w-sm">I am constantly pushing experiments, university assignments, and practice apps here.</p>
+                    <a href="#" class="bg-white text-black px-6 py-3 rounded-full font-bold hover:shadow-xl transition-all flex items-center gap-2">
+                        View Repositories <span class="material-symbols-rounded">arrow_forward</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About / Education Bento -->
+        <section id="about" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bento-card col-span-1 p-8 text-center flex flex-col items-center justify-center space-y-4 reveal">
+                <div class="w-16 h-16 bg-surfaceBorder rounded-2xl flex items-center justify-center rotate-3 border border-white/10">
+                    <span class="material-symbols-rounded text-4xl text-secondary">school</span>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Education</h3>
+                    <p class="text-textMuted text-sm mt-2">Bachelor of engineering (BE)</p>
+                    <p class="text-primary font-mono text-xs mt-1">2026</p>
+                </div>
+            </div>
+
+            <div class="bento-card md:col-span-2 p-8 md:p-12 flex flex-col justify-center space-y-4 reveal" style="transition-delay: 100ms;">
+                <h3 class="text-2xl font-bold flex items-center gap-3 text-white">
+                    <span class="material-symbols-rounded text-primary">person_search</span> Seeking Opportunities
+                </h3>
+                <p class="text-textMuted leading-relaxed">
+                    As a student, I am in a state of rapid learning. I may not have years of enterprise experience, but I am incredibly fast at picking up new frameworks, reading documentation, and building functional software from scratch.
+                </p>
+                <p class="text-textMuted leading-relaxed">
+                    I am actively seeking <strong class="text-white font-medium">junior roles and internships</strong> where I can write clean code, learn from experienced mentors, and contribute to real-world products.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Call to Action -->
+        <section id="contact" class="bento-card !bg-gradient-to-br from-primary/20 via-background to-secondary/20 p-12 md:p-24 text-center space-y-8 reveal relative overflow-hidden overflow-hidden border border-primary/20">
+            <!-- Decorative blur blobs -->
+            <div class="absolute top-0 left-0 w-64 h-64 bg-primary/30 rounded-full blur-[100px] pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/30 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <h2 class="text-5xl md:text-7xl font-bold tracking-tight relative z-10 text-white">Let's build <br/>something cool.</h2>
+            <p class="text-lg text-textMuted max-w-xl mx-auto relative z-10">
+                Are you looking for a passionate and dedicated junior developer for your team? Let's connect.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 relative z-10">
+                <a href="mailto:hello@faseed.dev" class="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex justify-center items-center gap-2">
+                    <span class="material-symbols-rounded">mail</span> Email Me
+                </a>
+                <a href="#" class="w-full sm:w-auto bg-black/50 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors flex justify-center items-center gap-2 border border-white/20 backdrop-blur-md">
+                    <span class="material-symbols-rounded">description</span> Download Resume
+                </a>
+            </div>
+        </section>
+      <!-- Focus / Skills Ribbon -->
+        <div class="bento-card p-6 flex flex-col justify-center overflow-hidden reveal w-full z-20 relative bg-[#121217]/80">
+            <div class="flex overflow-hidden relative w-full">
+                <div class="flex gap-12 whitespace-nowrap animate-scroll items-center">
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Kotlin</span>
+                    <span class="material-symbols-rounded text-primary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Jetpack Compose</span>
+                    <span class="material-symbols-rounded text-secondary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Android Studio</span>
+                    <span class="material-symbols-rounded text-accent">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Firebase</span>
+                    <span class="material-symbols-rounded text-primary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">RoomDB</span>
+                    <span class="material-symbols-rounded text-secondary">trip_origin</span>
+                    <!-- Duplicate for infinite scroll -->
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Kotlin</span>
+                    <span class="material-symbols-rounded text-primary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Jetpack Compose</span>
+                    <span class="material-symbols-rounded text-secondary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Android Studio</span>
+                    <span class="material-symbols-rounded text-accent">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Firebase</span>
+                    <span class="material-symbols-rounded text-primary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">RoomDB</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/5 mt-12 py-10 bg-black/50">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-textMuted text-sm">© 2024 Faseed. Crafted with passion.</p>
+            <div class="flex gap-6 text-sm font-medium text-textMuted">
+                <a href="#" class="hover:text-white transition-colors">GitHub</a>
+                <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-white transition-colors">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Mouse Glow Effect on Bento Cards -->
+    <script>
+        // Setup observer for reveals
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Setup mouse tracking for the bento cards radial gradient
+        const bentoCards = document.querySelectorAll('.bento-card');
+        bentoCards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>
