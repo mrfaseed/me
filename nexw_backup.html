@@ -25,9 +25,9 @@
                         background: '#0a0a0c',
                         surface: '#121217',
                         surfaceBorder: '#23232a',
-                        primary: '#6366f1', // Indigo
-                        secondary: '#8b5cf6', // Violet
-                        accent: '#06b6d4', // Cyan
+                        primary: '#3b82f6', // Indigo
+                        secondary: '#14b8a6', // Violet
+                        accent: '#a855f7', // Cyan
                         textMain: '#f8fafc',
                         textMuted: '#94a3b8'
                     },
@@ -35,6 +35,10 @@
                         'float': 'float 6s ease-in-out infinite',
                         'scroll': 'scroll 20s linear infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'drift-left': 'driftLeft 15s ease-in-out infinite',
+                        'drift-right': 'driftRight 18s ease-in-out infinite',
+                        'drift-left-slow': 'driftLeft 22s ease-in-out infinite reverse',
+                        'drift-right-slow': 'driftRight 25s ease-in-out infinite reverse',
                     },
                     keyframes: {
                         float: {
@@ -44,6 +48,16 @@
                         scroll: {
                             '0%': { transform: 'translateX(0)' },
                             '100%': { transform: 'translateX(-50%)' },
+                        },
+                        driftLeft: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) rotate(0deg)' },
+                            '33%': { transform: 'translate(10px, -15px) rotate(2deg)' },
+                            '66%': { transform: 'translate(-5px, 15px) rotate(-1deg)' },
+                        },
+                        driftRight: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) rotate(0deg)' },
+                            '33%': { transform: 'translate(-15px, 10px) rotate(-2deg)' },
+                            '66%': { transform: 'translate(10px, -10px) rotate(1deg)' },
                         }
                     }
                 }
@@ -63,8 +77,8 @@
             top: 0; left: 0; width: 100vw; height: 100vh;
             pointer-events: none; z-index: -1;
             background: 
-                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(20, 184, 166, 0.08) 0%, transparent 50%);
         }
 
         /* Bento Grid Hover Effects */
@@ -95,7 +109,7 @@
 
         .bento-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(99, 102, 241, 0.3);
+            border-color: rgba(59, 130, 246, 0.3);
             box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
         }
 
@@ -180,6 +194,28 @@
             
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none mix-blend-screen -z-10"></div>
             
+            <!-- Left Floating Background Icons -->
+            <div class="hidden lg:flex absolute left-[2%] xl:left-[8%] top-[15%] opacity-10 animate-drift-left pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[90px]">android</span>
+            </div>
+            <div class="hidden lg:flex absolute left-[8%] xl:left-[12%] top-[60%] opacity-5 animate-drift-left-slow pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[70px]">smartphone</span>
+            </div>
+            <div class="hidden lg:flex absolute left-[1%] xl:left-[4%] top-[80%] opacity-[0.07] animate-drift-left pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[110px]">code</span>
+            </div>
+
+            <!-- Right Floating Background Icons -->
+            <div class="hidden lg:flex absolute right-[5%] xl:right-[10%] top-[25%] opacity-[0.08] animate-drift-right pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[100px]">widgets</span>
+            </div>
+            <div class="hidden lg:flex absolute right-[10%] xl:right-[15%] top-[65%] opacity-[0.06] animate-drift-right-slow pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[80px]">developer_board</span>
+            </div>
+            <div class="hidden lg:flex absolute right-[2%] xl:right-[6%] top-[85%] opacity-5 animate-drift-right pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[60px]">devices</span>
+            </div>
+
             <div class="relative z-10 flex flex-col items-center text-center space-y-8 md:space-y-10">
                 
                 
@@ -329,8 +365,8 @@ Real apps. Used by real people
                 </div>
                 <div>
                     <h3 class="text-xl font-bold text-white">Education</h3>
-                    <p class="text-textMuted text-sm mt-2">Bachelor of Computer Application (BCA)</p>
-                    <p class="text-primary font-mono text-xs mt-1">2023-2026</p>
+                    <p class="text-textMuted text-sm mt-2">Bachelor of engineering (BE)</p>
+                    <p class="text-primary font-mono text-xs mt-1">2026</p>
                 </div>
             </div>
 

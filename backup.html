@@ -1,355 +1,473 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faseed - Android Developer</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "secondary-dim": "#be83fa",
-                        "on-primary-fixed": "#000000",
-                        "surface-container-highest": "#25252d",
-                        "error-container": "#a70138",
-                        "on-secondary-container": "#e4c4ff",
-                        "tertiary-container": "#3adffa",
-                        "on-tertiary-fixed": "#00363e",
-                        "surface-container-high": "#1f1f26",
-                        "on-primary": "#101b8b",
-                        "surface-bright": "#2c2b33",
-                        "on-primary-fixed-variant": "#0c1889",
-                        "on-background": "#f9f5fd",
-                        "on-error": "#490013",
-                        "surface-container-low": "#131319",
-                        "on-tertiary-fixed-variant": "#005561",
-                        "outline": "#76747b",
-                        "tertiary-fixed": "#3adffa",
-                        "on-secondary-fixed-variant": "#6c31a5",
-                        "error": "#ff6e84",
-                        "surface": "#0e0e13",
-                        "inverse-primary": "#4954bc",
-                        "surface-dim": "#0e0e13",
-                        "secondary-fixed": "#e4c6ff",
-                        "surface-variant": "#25252d",
-                        "on-primary-container": "#000a7b",
-                        "primary-fixed": "#8d98ff",
-                        "on-surface-variant": "#acaab1",
-                        "on-tertiary-container": "#004b56",
-                        "primary-fixed-dim": "#7f8af6",
-                        "tertiary": "#7de9ff",
-                        "surface-container": "#19191f",
-                        "inverse-on-surface": "#55545b",
-                        "surface-tint": "#9fa7ff",
-                        "secondary-container": "#62259b",
-                        "primary-container": "#8d98ff",
-                        "secondary": "#be83fa",
-                        "tertiary-fixed-dim": "#1ad0eb",
-                        "inverse-surface": "#fcf8ff",
-                        "on-error-container": "#ffb2b9",
-                        "outline-variant": "#48474d",
-                        "on-secondary-fixed": "#4e0487",
-                        "surface-container-lowest": "#000000",
-                        "on-surface": "#f9f5fd",
-                        "on-tertiary": "#005561",
-                        "on-secondary": "#32005b",
-                        "error-dim": "#d73357",
-                        "tertiary-dim": "#1ad0eb",
-                        "secondary-fixed-dim": "#dbb4ff",
-                        "background": "#0e0e13",
-                        "primary-dim": "#8a95ff",
-                        "primary": "#9fa7ff"
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
+                    colors: {
+                        background: '#0a0a0c',
+                        surface: '#121217',
+                        surfaceBorder: '#23232a',
+                        primary: '#3b82f6', // Indigo
+                        secondary: '#14b8a6', // Violet
+                        accent: '#a855f7', // Cyan
+                        textMain: '#f8fafc',
+                        textMuted: '#94a3b8'
                     },
-                    "fontFamily": {
-                        "headline": ["Manrope"],
-                        "body": ["Inter"],
-                        "label": ["Space Grotesk"]
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'scroll': 'scroll 20s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'drift-left': 'driftLeft 15s ease-in-out infinite',
+                        'drift-right': 'driftRight 18s ease-in-out infinite',
+                        'drift-left-slow': 'driftLeft 22s ease-in-out infinite reverse',
+                        'drift-right-slow': 'driftRight 25s ease-in-out infinite reverse',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        driftLeft: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) rotate(0deg)' },
+                            '33%': { transform: 'translate(10px, -15px) rotate(2deg)' },
+                            '66%': { transform: 'translate(-5px, 15px) rotate(-1deg)' },
+                        },
+                        driftRight: {
+                            '0%, 100%': { transform: 'translate(0px, 0px) rotate(0deg)' },
+                            '33%': { transform: 'translate(-15px, 10px) rotate(-2deg)' },
+                            '66%': { transform: 'translate(10px, -10px) rotate(1deg)' },
+                        }
                     }
-                },
-            },
+                }
+            }
         }
     </script>
-<style>
+    <style>
         body {
-            background-color: #0e0e13;
-            color: #f9f5fd;
-            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0c;
+            color: #f8fafc;
+            overflow-x: hidden;
         }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+
+        /* Ambient Glow Background */
+        .ambient-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(20, 184, 166, 0.08) 0%, transparent 50%);
         }
-        .text-glow {
-            text-shadow: 0 0 12px rgba(159, 167, 255, 0.3);
+
+        /* Bento Grid Hover Effects */
+        .bento-card {
+            background: rgba(18, 18, 23, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid #23232a;
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .bg-glass {
-            backdrop-filter: blur(24px);
+        
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+
+        .bento-card:hover::before {
+            opacity: 1;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);
+        }
+
+        .bento-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #23232a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Floating Nav */
+        .floating-nav {
+            background: rgba(18, 18, 23, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
-<body class="selection:bg-primary-container selection:text-on-primary-container">
-<!-- Top Navigation -->
-<nav class="fixed top-0 w-full h-[70px] bg-[#0e0e13]/60 backdrop-blur-xl z-[100] shadow-[0_0_64px_rgba(99,102,241,0.04)]">
-<div class="max-w-screen-2xl mx-auto flex justify-between items-center px-8 md:px-12 h-full">
-<span class="text-xl font-bold tracking-tighter text-indigo-400 dark:text-indigo-300 font-mono">faseed.dev</span>
-<!-- Desktop Links -->
-<div class="hidden md:flex items-center gap-10">
-<a class="text-slate-400 hover:text-indigo-300 transition-colors duration-500 font-['Space_Grotesk'] text-sm tracking-widest uppercase" href="#projects">Projects</a>
-<a class="text-slate-400 hover:text-indigo-300 transition-colors duration-500 font-['Space_Grotesk'] text-sm tracking-widest uppercase" href="#stack">Stack</a>
-<a class="text-slate-400 hover:text-indigo-300 transition-colors duration-500 font-['Space_Grotesk'] text-sm tracking-widest uppercase" href="#about">Case Studies</a>
-<a class="text-slate-400 hover:text-indigo-300 transition-colors duration-500 font-['Space_Grotesk'] text-sm tracking-widest uppercase" href="#contact">Contact</a>
-</div>
-<button class="bg-gradient-to-r from-primary to-secondary text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.5)] transition-all ease-in-out active:scale-95">
-                Resume
-            </button>
-</div>
+<body class="antialiased selection:bg-primary/30 selection:text-white">
+
+    <div class="ambient-glow"></div>
+
+    <!-- Navigation Island -->
+  <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 floating-nav px-10 py-4 rounded-full flex items-center gap-8 shadow-2xl max-w-4xl w-[90%] backdrop-blur-md">
+    
+    <!-- Logo -->
+    <a href="#home" class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
+    Faseed / Android
+</a>
+
+    <!-- Divider -->
+    <div class="w-px h-5 bg-surfaceBorder"></div>
+
+    <!-- Nav Links -->
+    <div class="flex gap-6 text-sm font-medium text-textMuted hidden md:flex">
+        <a href="#projects" class="hover:text-white transition-colors">Work/projects</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="ml-auto flex items-center gap-3">
+        
+        <!-- Resume Download -->
+        <a href="/resume.pdf" download 
+           class="border border-surfaceBorder text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
+            Download Resume
+        </a>
+
+    </div>
+
 </nav>
-<!-- Main Content -->
-<main class="pt-[70px]">
-<!-- Hero Section -->
-<section class="min-h-[921px] flex flex-col justify-center items-center text-center px-8 relative overflow-hidden">
-<!-- Background Glows -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
-<div class="absolute top-1/4 right-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] -z-10"></div>
-<div class="space-y-4 mb-8">
-<span class="font-label text-primary tracking-[0.4em] uppercase text-xs">Architecting Native Experiences</span>
-<h1 class="text-6xl md:text-8xl font-headline font-extrabold tracking-[-0.04em] leading-[0.9] text-on-background">
-                    Android <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">Developer</span>
-</h1>
-<p class="text-xl md:text-2xl font-label text-outline-variant tracking-tighter mt-4">Faseed</p>
-</div>
-<div class="mt-12">
-<span class="material-symbols-outlined text-outline-variant text-4xl animate-bounce">expand_more</span>
-</div>
-</section>
-<!-- Code Ribbon Background -->
-<div class="w-full overflow-hidden bg-surface-container-low py-4 flex items-center whitespace-nowrap">
-<div class="flex gap-16 animate-infinite-scroll font-label text-tertiary-dim opacity-20 text-sm tracking-[0.2em] uppercase no-scrollbar">
-<span>Kotlin Multiplatform • Jetpack Compose • MVVM Architecture • Clean Code • Coroutines • Dagger Hilt • Firebase • Retrofit • CI/CD • Unit Testing</span>
-<span>Kotlin Multiplatform • Jetpack Compose • MVVM Architecture • Clean Code • Coroutines • Dagger Hilt • Firebase • Retrofit • CI/CD • Unit Testing</span>
-</div>
-</div>
-<!-- About Section -->
-<section class="py-32 px-8 max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center" id="about">
-<div class="relative group">
-<div class="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-xl blur-2xl group-hover:blur-3xl transition-all"></div>
-<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container-high">
-<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="Modern dark studio shot of a high-end workstation with neon ambient lighting and lines of code on multiple monitors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHFE4wiXdJMyPh2LxldZlPQAwfebctYddGr3mV09b9j4Xg8znAU9vYDl1i0IllgQutlhenxSRnCFgP1QkdYdfsTkcssFXd1idM9sa_f4xrywtE0L3gLGc2pB-KN3loSfUpdB1BBRsIgTgIi3SYdoUN-xt3CMTfdW2LT5cN8MAAe7IBcwgeIm_VR02Evh3JBgG5nmtl9hOdOTgdHwzeebKRVlAJf4Bwr35ZqUn7r6meyoAY2IQJw0BP6w8Eq8iI-RR2ivFWwEyc1jI6"/>
-</div>
-<div class="absolute -bottom-6 -right-6 p-8 bg-surface-container-highest rounded-xl shadow-2xl">
-<span class="block font-headline text-4xl font-bold text-primary">5+</span>
-<span class="font-label text-xs uppercase tracking-widest text-outline-variant">Years Exp.</span>
-</div>
-</div>
-<div class="space-y-8">
-<div class="space-y-4">
-<h2 class="font-label text-secondary text-sm uppercase tracking-[0.3em]">The Philosophy</h2>
-<h3 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight">Code that breathes, <br/>interfaces that feel.</h3>
-</div>
-<p class="text-on-surface-variant text-lg leading-relaxed font-body">
-                    I believe in the marriage of engineering precision and aesthetic elegance. My approach to Android development focuses on high-performance native applications that prioritize user ergonomics and fluid motion. 
+
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-24 space-y-24">
+        
+        <!-- Awesome Typographic Hero Section -->
+        <section id="home" class="min-h-[75vh] flex flex-col justify-center relative reveal mt-[-2rem] md:mt-[-4rem]">
+            
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none mix-blend-screen -z-10"></div>
+            
+            <!-- Left Floating Background Icons -->
+            <div class="hidden lg:flex absolute left-[2%] xl:left-[8%] top-[15%] opacity-10 animate-drift-left pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[90px]">android</span>
+            </div>
+            <div class="hidden lg:flex absolute left-[8%] xl:left-[12%] top-[60%] opacity-5 animate-drift-left-slow pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[70px]">smartphone</span>
+            </div>
+            <div class="hidden lg:flex absolute left-[1%] xl:left-[4%] top-[80%] opacity-[0.07] animate-drift-left pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[110px]">code</span>
+            </div>
+
+            <!-- Right Floating Background Icons -->
+            <div class="hidden lg:flex absolute right-[5%] xl:right-[10%] top-[25%] opacity-[0.08] animate-drift-right pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[100px]">widgets</span>
+            </div>
+            <div class="hidden lg:flex absolute right-[10%] xl:right-[15%] top-[65%] opacity-[0.06] animate-drift-right-slow pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[80px]">developer_board</span>
+            </div>
+            <div class="hidden lg:flex absolute right-[2%] xl:right-[6%] top-[85%] opacity-5 animate-drift-right pointer-events-none text-white select-none">
+                <span class="material-symbols-rounded text-[60px]">devices</span>
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center text-center space-y-8 md:space-y-10">
+                
+                
+
+                <div class="space-y-2 md:space-y-4 lg:mt-20">
+                    <h1 class="text-5xl md:text-8xl lg:text-[7rem] font-bold tracking-tight leading-[1] md:leading-[0.9] text-white">
+                        Hi, I'm Faseed.
+                    </h1>
+                    <h2 class="text-4xl md:text-7xl lg:text-[6rem] font-bold tracking-tight leading-[1] md:leading-[0.9] text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent pb-2 md:pb-4">
+                        I build mobile apps.
+                    </h2>
+                </div>
+
+                <p class="text-textMuted text-base md:text-xl max-w-2xl mx-auto leading-relaxed px-4">
+                    I design and build smooth Android apps with real-world performance 
                 </p>
-<div class="grid grid-cols-2 gap-8 pt-4">
-<div class="space-y-2">
-<h4 class="font-label text-on-surface text-sm font-bold uppercase tracking-widest">Performance</h4>
-<p class="text-on-surface-variant text-sm">Optimizing frame rates and memory footprint for buttery-smooth interactions.</p>
-</div>
-<div class="space-y-2">
-<h4 class="font-label text-on-surface text-sm font-bold uppercase tracking-widest">Architecture</h4>
-<p class="text-on-surface-variant text-sm">Scalable, testable codebases built on Solid principles and modular design.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Projects Grid -->
-<section class="py-32 px-8 bg-surface-container-low" id="projects">
-<div class="max-w-7xl mx-auto space-y-16">
-<div class="flex flex-col md:flex-row justify-between items-end gap-6">
-<div class="space-y-4">
-<h2 class="font-label text-tertiary text-sm uppercase tracking-[0.3em]">Selected Works</h2>
-<h3 class="text-4xl md:text-6xl font-headline font-extrabold">Digital Case Studies</h3>
-</div>
-<p class="max-w-xs text-on-surface-variant font-label text-sm uppercase tracking-wider leading-relaxed">
-                        01 — 04 Archive <br/> 2023—2024 Production
-                    </p>
-</div>
-<div class="grid md:grid-cols-2 gap-12">
-<!-- Project Card 1 -->
-<div class="group relative flex flex-col gap-6">
-<div class="aspect-[16/10] bg-surface-container-high rounded-xl overflow-hidden relative">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Minimalist smartphone app interface showing sleek financial dashboard with violet and blue gradient charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdUtyh5xEduMDPaQZka0cpL-P12TXv99cLKlL3pMbDmmSKdyPr3aV3gktHvLLjHMFYcnvJpg756jKtwkOqLYjWm37-yAUvI-QrcHvSDdOWxjjbiIWzqi8FrmDctUJw1PodDQBDAp8GF9jtmksuYqrWn8os2nN0At66oE3UEQpHvgL9X3F9jGUa8FIqM22U4uY1ka8EzcIhdAzeIpBSUW_RuKKEFF9HCcux4oXA2e3RqCi_cjXIsyCQHLAe9vulOU78P3HHxy_9xWTL"/>
-<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
-<div class="absolute bottom-6 left-6 flex gap-2">
-<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-primary">Fintech</span>
-<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-secondary">Jetpack Compose</span>
-</div>
-</div>
-<div class="flex justify-between items-start px-2">
-<div class="space-y-1">
-<h4 class="text-2xl font-headline font-bold text-on-surface">Lumina Wallet</h4>
-<p class="text-on-surface-variant font-body">Cryptocurrency portfolio manager with real-time biometric security.</p>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_outward</span>
-</div>
-</div>
-<!-- Project Card 2 -->
-<div class="group relative flex flex-col gap-6 md:mt-16">
-<div class="aspect-[16/10] bg-surface-container-high rounded-xl overflow-hidden relative">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Conceptual mobile app UI for a smart home system with soft glow glassmorphism controls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjLPDCYldQN8aLuEQcw0KryquhH5uC5ttQsiNP1hPFIFOiBATchGYz5FjRfRzt0RvnNJZwDO4TYYhoKq6wsxcyG_dXNuGWEA7pnUAOvMHfDkBE9lxswyhO6jPa8w9kpvXy1iqmJsFtxQXD-GGbVp3V520orbqCNojn1RhS7MIW4gl5NjHYO2kp8JWOkORnYqDt4hBS1EdOHHxSqXRZyAA-IUL_swUF5wA4GSu6Oe3tOFeyFLXc9Tn6RPO0OiAt41BoTqwEFraNCQCZ"/>
-<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
-<div class="absolute bottom-6 left-6 flex gap-2">
-<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-primary">IoT</span>
-<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-secondary">Bluetooth Low Energy</span>
-</div>
-</div>
-<div class="flex justify-between items-start px-2">
-<div class="space-y-1">
-<h4 class="text-2xl font-headline font-bold text-on-surface">Nexus Home</h4>
-<p class="text-on-surface-variant font-body">Seamless integration for smart home devices with zero-latency response.</p>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">arrow_outward</span>
-</div>
-</div>
-<!-- Project Card 3 -->
-<div class="group relative flex flex-col gap-6">
-<div class="aspect-[16/10] bg-surface-container-high rounded-xl overflow-hidden relative">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Close up of high precision code editor screen with syntax highlighting in indigo and cyan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_2dtLJRfjcXoMUPPGRpaojgo0y8HkS5akReRE8JNEn254fMtJB5xb5lHzJlXYcWyAhvKz5Ssmo15QULD03JPohnkSmIhP2TZM1ahU2704zS1JSjCqIlJ0tlXi7vEbz0txRpeAKZpWUkKXRzAIjwOOfBX8h-N7oxSpltFYpvkc-GqSY6NkRJ_r23rIQJpfmd322LdS5Hj4sdrcWx8xvcmcON3N4oyPoGhbFDaKs46c1FEGUybiOTxvuRK20cjhDr9QZuO43y72F7G_"/>
-<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
-<div class="absolute bottom-6 left-6 flex gap-2">
-<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-primary">Developer Tool</span>
-<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-secondary">Kotlin DSL</span>
-</div>
-</div>
-<div class="flex justify-between items-start px-2">
-<div class="space-y-1">
-<h4 class="text-2xl font-headline font-bold text-on-surface">Arch-Gen</h4>
-<p class="text-on-surface-variant font-body">Architecture pattern generator for rapid Android prototyping.</p>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-tertiary transition-colors">arrow_outward</span>
-</div>
-</div>
-<!-- Project Card 4 -->
-<div class="group relative flex flex-col gap-6 md:mt-16">
-<div class="aspect-[16/10] bg-surface-container-high rounded-xl overflow-hidden relative">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Creative workspace with tablet displaying a colorful art application UI" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAix7RjJ2II58Fsc1wWB5Yh_a-HAlXNwxCufv13vF9Tzso_HT_WufiBNqc9r3Oncx4YZ7gK6qdy-xCCo5cfwG2-DNDJpN9Y2qXiL1XVC8qSFqhLhdDgft8ubGEQQC1Uwv0uYi5k98dp8wCPwF4uVHwfXxZdVcCmMJbJhYEmdBf3V8tKQbQBzt1J-ZKbflo-pD0hJ_n_Zk6WGur3XkG72ko8YhDMNA5YfhkQ8VpfloU3ENUK1nXkhRWWvWaTYx9RyL04x1kkpkweNl0k"/>
-<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
-<div class="absolute bottom-6 left-6 flex gap-2">
-<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-primary">Lifestyle</span>
-<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-secondary">Canvas API</span>
-</div>
-</div>
-<div class="flex justify-between items-start px-2">
-<div class="space-y-1">
-<h4 class="text-2xl font-headline font-bold text-on-surface">Vivid Canvas</h4>
-<p class="text-on-surface-variant font-body">A high-performance sketching app built with custom Android drawing layers.</p>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_outward</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Tech Stack Bento -->
-<section class="py-32 px-8 max-w-7xl mx-auto" id="stack">
-<div class="text-center space-y-4 mb-20">
-<h2 class="font-label text-primary text-sm uppercase tracking-[0.3em]">The Toolkit</h2>
-<h3 class="text-4xl md:text-5xl font-headline font-extrabold">Technical Foundation</h3>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-<!-- Large Bento Item -->
-<div class="md:col-span-2 md:row-span-2 bg-surface-container-low p-10 rounded-xl flex flex-col justify-between group hover:bg-surface-container-high transition-all">
-<div class="space-y-6">
-<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">terminal</span>
-</div>
-<h4 class="text-3xl font-headline font-bold">Native Mastery</h4>
-<p class="text-on-surface-variant font-body leading-relaxed">Deep expertise in Kotlin and the Android SDK, leveraging modern declarative UI frameworks like Jetpack Compose to build high-performance applications.</p>
-</div>
-<div class="flex flex-wrap gap-2 mt-8">
-<span class="px-4 py-1.5 bg-surface-container-highest rounded-full font-label text-xs tracking-widest text-outline-variant">KOTLIN</span>
-<span class="px-4 py-1.5 bg-surface-container-highest rounded-full font-label text-xs tracking-widest text-outline-variant">SDK v34+</span>
-<span class="px-4 py-1.5 bg-surface-container-highest rounded-full font-label text-xs tracking-widest text-outline-variant">COMPOSE</span>
-</div>
-</div>
-<!-- Small Bento Items -->
-<div class="bg-surface-container-low p-8 rounded-xl space-y-4 hover:bg-surface-container-high transition-all">
-<span class="material-symbols-outlined text-secondary text-4xl">database</span>
-<h4 class="text-xl font-headline font-bold">Persistence</h4>
-<p class="text-sm text-on-surface-variant font-body">Room, SQLDelight, and DataStore for reliable local data handling.</p>
-</div>
-<div class="bg-surface-container-low p-8 rounded-xl space-y-4 hover:bg-surface-container-high transition-all">
-<span class="material-symbols-outlined text-tertiary text-4xl">cloud_sync</span>
-<h4 class="text-xl font-headline font-bold">Networking</h4>
-<p class="text-sm text-on-surface-variant font-body">Retrofit, Ktor, and Protobuf for efficient API communication.</p>
-</div>
-<!-- Wide Bento Item -->
-<div class="md:col-span-2 bg-surface-container-low p-8 rounded-xl flex items-center gap-8 hover:bg-surface-container-high transition-all">
-<span class="material-symbols-outlined text-primary-fixed text-5xl">architecture</span>
-<div>
-<h4 class="text-xl font-headline font-bold">Clean Architecture</h4>
-<p class="text-sm text-on-surface-variant font-body">Domain-driven design ensuring modularity and testability across large-scale projects.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Contact CTA -->
-<section class="py-32 px-8 text-center relative overflow-hidden" id="contact">
-<div class="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-primary/5"></div>
-<div class="max-w-3xl mx-auto space-y-12">
-<div class="space-y-4">
-<h2 class="font-label text-secondary text-sm uppercase tracking-[0.4em]">Ready to build?</h2>
-<h3 class="text-5xl md:text-7xl font-headline font-extrabold leading-tight">Let's craft your next <span class="text-glow text-primary">vision.</span></h3>
-</div>
-<p class="text-xl text-on-surface-variant font-body">
-                    Currently available for selected freelance projects and architectural consulting.
+
+                <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6 pt-4">
+                    <a href="#projects" class="bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+                        See what I’ve built <span class="material-symbols-rounded">arrow_downward</span>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="text-white hover:text-accent font-bold transition-colors flex items-center gap-2">
+                        View GitHub <span class="material-symbols-rounded text-sm">open_in_new</span>
+                    </a>
+                </div>
+              <p class="text-textMuted/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed px-4">
+Real apps. Used by real people
+</p>
+<span class="text-textMuted/50 text-xl animate-[bounce_2s_infinite]">
+  ↓
+</span>
+            </div>
+            
+            <!-- Scroll Indicator
+            <div class="hidden md:flex absolute bottom-0 left-1/2 -translate-x-1/2 flex-col items-center gap-2 animate-bounce opacity-50">
+                <span class="material-symbols-rounded text-white">south</span>
+            </div>
+             -->
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects" class="space-y-12 pt-12">
+            <div class="flex items-end justify-between reveal">
+                <div>
+                    <h2 class="text-4xl lg:text-5xl font-bold">Featured Projects.</h2>
+                    <p class="text-textMuted mt-2 text-lg">Apps I've built while exploring Android Dev.</p>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-2 text-primary font-bold hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                    View GitHub <span class="material-symbols-rounded text-lg">arrow_outward</span>
+                </a>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="grid md:grid-cols-2 gap-6">
+                
+                <!-- Project 1 -->
+                <div class="bento-card flex flex-col h-[450px] group reveal">
+                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">task_alt</span>
+                    </div>
+                    <div class="p-8 bento-content flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">TaskFlow App</h3>
+                                <p class="text-textMuted mt-1">Personal Productivity & Habit Tracker</p>
+                            </div>
+                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all">
+                                <span class="material-symbols-rounded">arrow_outward</span>
+                            </a>
+                        </div>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-primary">Kotlin</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Room Database</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">MVVM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bento-card flex flex-col h-[450px] group reveal" style="transition-delay: 100ms;">
+                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-transparent"></div>
+                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">partly_cloudy_day</span>
+                    </div>
+                    <div class="p-8 bento-content flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Weather Cast</h3>
+                                <p class="text-textMuted mt-1">Real-time dynamic weather forecasting</p>
+                            </div>
+                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-secondary group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
+                                <span class="material-symbols-rounded">arrow_outward</span>
+                            </a>
+                        </div>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-secondary">Jetpack Compose</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Retrofit APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bento-card flex flex-col h-[450px] group reveal">
+                    <div class="h-[250px] w-full overflow-hidden relative bg-[#1c1c24] flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent/20 to-transparent"></div>
+                        <span class="material-symbols-rounded text-7xl text-white/20 group-hover:scale-125 transition-transform duration-700">forum</span>
+                    </div>
+                    <div class="p-8 bento-content flex flex-col flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">UniChat</h3>
+                                <p class="text-textMuted mt-1">Campus messaging platform prototype</p>
+                            </div>
+                            <a href="#" class="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all">
+                                <span class="material-symbols-rounded">arrow_outward</span>
+                            </a>
+                        </div>
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-accent">Firebase Auth</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Firestore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Open Source / More -->
+                <div class="bento-card flex flex-col items-center justify-center h-[450px] text-center p-8 group reveal hover:bg-surfaceBorder/30" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 bg-primary/20 text-primary rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-rounded text-4xl">code</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">More on GitHub</h3>
+                    <p class="text-textMuted mt-2 mb-8 max-w-sm">I am constantly pushing experiments, university assignments, and practice apps here.</p>
+                    <a href="#" class="bg-white text-black px-6 py-3 rounded-full font-bold hover:shadow-xl transition-all flex items-center gap-2">
+                        View Repositories <span class="material-symbols-rounded">arrow_forward</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About / Education Bento -->
+        <section id="about" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bento-card col-span-1 p-8 text-center flex flex-col items-center justify-center space-y-4 reveal">
+                <div class="w-16 h-16 bg-surfaceBorder rounded-2xl flex items-center justify-center rotate-3 border border-white/10">
+                    <span class="material-symbols-rounded text-4xl text-secondary">school</span>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Education</h3>
+                    <p class="text-textMuted text-sm mt-2">Bachelor of engineering (BE)</p>
+                    <p class="text-primary font-mono text-xs mt-1">2026</p>
+                </div>
+            </div>
+
+            <div class="bento-card md:col-span-2 p-8 md:p-12 flex flex-col justify-center space-y-4 reveal" style="transition-delay: 100ms;">
+                <h3 class="text-2xl font-bold flex items-center gap-3 text-white">
+                    <span class="material-symbols-rounded text-primary">person_search</span> Seeking Opportunities
+                </h3>
+                <p class="text-textMuted leading-relaxed">
+                    As a student, I am in a state of rapid learning. I may not have years of enterprise experience, but I am incredibly fast at picking up new frameworks, reading documentation, and building functional software from scratch.
                 </p>
-<div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
-<a class="w-full md:w-auto bg-gradient-to-r from-primary to-secondary text-on-primary-fixed px-10 py-4 rounded-md font-bold tracking-widest uppercase text-sm hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20" href="mailto:hello@faseed.dev">
-                        Inquire Project
-                    </a>
-<a class="w-full md:w-auto px-10 py-4 border border-outline-variant hover:border-outline text-on-surface font-label text-sm tracking-widest uppercase rounded-md transition-all" href="#">
-                        View GitHub
-                    </a>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full py-16 px-8 border-t border-white/5 bg-[#0e0e13]">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="flex flex-col items-center md:items-start gap-2">
-<span class="text-lg font-black text-on-surface tracking-tighter">faseed.dev</span>
-<p class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.3em] text-slate-500">© 2024 faseed.dev — Engineered with Precision</p>
-</div>
-<div class="flex gap-8">
-<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-slate-500 hover:text-indigo-300 hover:translate-y-[-2px] transition-all" href="#">GitHub</a>
-<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-slate-500 hover:text-indigo-300 hover:translate-y-[-2px] transition-all" href="#">LinkedIn</a>
-<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-slate-500 hover:text-indigo-300 hover:translate-y-[-2px] transition-all" href="#">Twitter</a>
-<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-slate-500 hover:text-indigo-300 hover:translate-y-[-2px] transition-all" href="#">Email</a>
-</div>
-</div>
-</footer>
-<style>
-        @keyframes infinite-scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-        .animate-infinite-scroll {
-            animation: infinite-scroll 40s linear infinite;
-        }
-    </style>
-</body></html>
+                <p class="text-textMuted leading-relaxed">
+                    I am actively seeking <strong class="text-white font-medium">junior roles and internships</strong> where I can write clean code, learn from experienced mentors, and contribute to real-world products.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Call to Action -->
+        <section id="contact" class="bento-card !bg-gradient-to-br from-primary/20 via-background to-secondary/20 p-12 md:p-24 text-center space-y-8 reveal relative overflow-hidden overflow-hidden border border-primary/20">
+            <!-- Decorative blur blobs -->
+            <div class="absolute top-0 left-0 w-64 h-64 bg-primary/30 rounded-full blur-[100px] pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/30 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <h2 class="text-5xl md:text-7xl font-bold tracking-tight relative z-10 text-white">Let's build <br/>something cool.</h2>
+            <p class="text-lg text-textMuted max-w-xl mx-auto relative z-10">
+                Are you looking for a passionate and dedicated junior developer for your team? Let's connect.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 relative z-10">
+                <a href="mailto:hello@faseed.dev" class="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex justify-center items-center gap-2">
+                    <span class="material-symbols-rounded">mail</span> Email Me
+                </a>
+                <a href="#" class="w-full sm:w-auto bg-black/50 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors flex justify-center items-center gap-2 border border-white/20 backdrop-blur-md">
+                    <span class="material-symbols-rounded">description</span> Download Resume
+                </a>
+            </div>
+        </section>
+      <!-- Focus / Skills Ribbon -->
+        <div class="bento-card p-6 flex flex-col justify-center overflow-hidden reveal w-full z-20 relative bg-[#121217]/80">
+            <div class="flex overflow-hidden relative w-full">
+                <div class="flex gap-12 whitespace-nowrap animate-scroll items-center">
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Kotlin</span>
+                    <span class="material-symbols-rounded text-primary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Jetpack Compose</span>
+                    <span class="material-symbols-rounded text-secondary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Android Studio</span>
+                    <span class="material-symbols-rounded text-accent">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Firebase</span>
+                    <span class="material-symbols-rounded text-primary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">RoomDB</span>
+                    <span class="material-symbols-rounded text-secondary">trip_origin</span>
+                    <!-- Duplicate for infinite scroll -->
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Kotlin</span>
+                    <span class="material-symbols-rounded text-primary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Jetpack Compose</span>
+                    <span class="material-symbols-rounded text-secondary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Android Studio</span>
+                    <span class="material-symbols-rounded text-accent">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">Firebase</span>
+                    <span class="material-symbols-rounded text-primary">trip_origin</span>
+                    <span class="text-2xl lg:text-3xl font-bold text-white/40 hover:text-white transition-colors cursor-default">RoomDB</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/5 mt-12 py-10 bg-black/50">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-textMuted text-sm">© 2024 Faseed. Crafted with passion.</p>
+            <div class="flex gap-6 text-sm font-medium text-textMuted">
+                <a href="#" class="hover:text-white transition-colors">GitHub</a>
+                <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-white transition-colors">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Mouse Glow Effect on Bento Cards -->
+    <script>
+        // Setup observer for reveals
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Setup mouse tracking for the bento cards radial gradient
+        const bentoCards = document.querySelectorAll('.bento-card');
+        bentoCards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body>
+</html>
