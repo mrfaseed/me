@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;family=Space+Grotesk:wght@300;400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-dim": "#be83fa",
+                        "on-primary-fixed": "#000000",
+                        "surface-container-highest": "#25252d",
+                        "error-container": "#a70138",
+                        "on-secondary-container": "#e4c4ff",
+                        "tertiary-container": "#3adffa",
+                        "on-tertiary-fixed": "#00363e",
+                        "surface-container-high": "#1f1f26",
+                        "on-primary": "#101b8b",
+                        "surface-bright": "#2c2b33",
+                        "on-primary-fixed-variant": "#0c1889",
+                        "on-background": "#f9f5fd",
+                        "on-error": "#490013",
+                        "surface-container-low": "#131319",
+                        "on-tertiary-fixed-variant": "#005561",
+                        "outline": "#76747b",
+                        "tertiary-fixed": "#3adffa",
+                        "on-secondary-fixed-variant": "#6c31a5",
+                        "error": "#ff6e84",
+                        "surface": "#0e0e13",
+                        "inverse-primary": "#4954bc",
+                        "surface-dim": "#0e0e13",
+                        "secondary-fixed": "#e4c6ff",
+                        "surface-variant": "#25252d",
+                        "on-primary-container": "#000a7b",
+                        "primary-fixed": "#8d98ff",
+                        "on-surface-variant": "#acaab1",
+                        "on-tertiary-container": "#004b56",
+                        "primary-fixed-dim": "#7f8af6",
+                        "tertiary": "#7de9ff",
+                        "surface-container": "#19191f",
+                        "inverse-on-surface": "#55545b",
+                        "surface-tint": "#9fa7ff",
+                        "secondary-container": "#62259b",
+                        "primary-container": "#8d98ff",
+                        "secondary": "#be83fa",
+                        "tertiary-fixed-dim": "#1ad0eb",
+                        "inverse-surface": "#fcf8ff",
+                        "on-error-container": "#ffb2b9",
+                        "outline-variant": "#48474d",
+                        "on-secondary-fixed": "#4e0487",
+                        "surface-container-lowest": "#000000",
+                        "on-surface": "#f9f5fd",
+                        "on-tertiary": "#005561",
+                        "on-secondary": "#32005b",
+                        "error-dim": "#d73357",
+                        "tertiary-dim": "#1ad0eb",
+                        "secondary-fixed-dim": "#dbb4ff",
+                        "background": "#0e0e13",
+                        "primary-dim": "#8a95ff",
+                        "primary": "#9fa7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e0e13;
+            color: #f9f5fd;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-glow {
+            text-shadow: 0 0 12px rgba(159, 167, 255, 0.3);
+        }
+        .bg-glass {
+            backdrop-filter: blur(24px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full h-[70px] bg-[#0e0e13]/60 backdrop-blur-xl z-[100] shadow-[0_0_64px_rgba(99,102,241,0.04)]">
+<div class="max-w-screen-2xl mx-auto flex justify-between items-center px-8 md:px-12 h-full">
+<span class="text-xl font-bold tracking-tighter text-indigo-400 dark:text-indigo-300 font-mono">faseed.dev</span>
+<!-- Desktop Links -->
+<div class="hidden md:flex items-center gap-10">
+<a class="text-slate-400 hover:text-indigo-300 transition-colors duration-500 font-['Space_Grotesk'] text-sm tracking-widest uppercase" href="#projects">Projects</a>
+<a class="text-slate-400 hover:text-indigo-300 transition-colors duration-500 font-['Space_Grotesk'] text-sm tracking-widest uppercase" href="#stack">Stack</a>
+<a class="text-slate-400 hover:text-indigo-300 transition-colors duration-500 font-['Space_Grotesk'] text-sm tracking-widest uppercase" href="#about">Case Studies</a>
+<a class="text-slate-400 hover:text-indigo-300 transition-colors duration-500 font-['Space_Grotesk'] text-sm tracking-widest uppercase" href="#contact">Contact</a>
+</div>
+<button class="bg-gradient-to-r from-primary to-secondary text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide hover:drop-shadow-[0_0_8px_rgba(99,102,241,0.5)] transition-all ease-in-out active:scale-95">
+                Resume
+            </button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-[70px]">
+<!-- Hero Section -->
+<section class="min-h-[921px] flex flex-col justify-center items-center text-center px-8 relative overflow-hidden">
+<!-- Background Glows -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+<div class="absolute top-1/4 right-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] -z-10"></div>
+<div class="space-y-4 mb-8">
+<span class="font-label text-primary tracking-[0.4em] uppercase text-xs">Architecting Native Experiences</span>
+<h1 class="text-6xl md:text-8xl font-headline font-extrabold tracking-[-0.04em] leading-[0.9] text-on-background">
+                    Android <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-tertiary">Developer</span>
+</h1>
+<p class="text-xl md:text-2xl font-label text-outline-variant tracking-tighter mt-4">Faseed</p>
+</div>
+<div class="mt-12">
+<span class="material-symbols-outlined text-outline-variant text-4xl animate-bounce">expand_more</span>
+</div>
+</section>
+<!-- Code Ribbon Background -->
+<div class="w-full overflow-hidden bg-surface-container-low py-4 flex items-center whitespace-nowrap">
+<div class="flex gap-16 animate-infinite-scroll font-label text-tertiary-dim opacity-20 text-sm tracking-[0.2em] uppercase no-scrollbar">
+<span>Kotlin Multiplatform • Jetpack Compose • MVVM Architecture • Clean Code • Coroutines • Dagger Hilt • Firebase • Retrofit • CI/CD • Unit Testing</span>
+<span>Kotlin Multiplatform • Jetpack Compose • MVVM Architecture • Clean Code • Coroutines • Dagger Hilt • Firebase • Retrofit • CI/CD • Unit Testing</span>
+</div>
+</div>
+<!-- About Section -->
+<section class="py-32 px-8 max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center" id="about">
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-xl blur-2xl group-hover:blur-3xl transition-all"></div>
+<div class="relative aspect-square rounded-xl overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="Modern dark studio shot of a high-end workstation with neon ambient lighting and lines of code on multiple monitors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHFE4wiXdJMyPh2LxldZlPQAwfebctYddGr3mV09b9j4Xg8znAU9vYDl1i0IllgQutlhenxSRnCFgP1QkdYdfsTkcssFXd1idM9sa_f4xrywtE0L3gLGc2pB-KN3loSfUpdB1BBRsIgTgIi3SYdoUN-xt3CMTfdW2LT5cN8MAAe7IBcwgeIm_VR02Evh3JBgG5nmtl9hOdOTgdHwzeebKRVlAJf4Bwr35ZqUn7r6meyoAY2IQJw0BP6w8Eq8iI-RR2ivFWwEyc1jI6"/>
+</div>
+<div class="absolute -bottom-6 -right-6 p-8 bg-surface-container-highest rounded-xl shadow-2xl">
+<span class="block font-headline text-4xl font-bold text-primary">5+</span>
+<span class="font-label text-xs uppercase tracking-widest text-outline-variant">Years Exp.</span>
+</div>
+</div>
+<div class="space-y-8">
+<div class="space-y-4">
+<h2 class="font-label text-secondary text-sm uppercase tracking-[0.3em]">The Philosophy</h2>
+<h3 class="text-4xl md:text-5xl font-headline font-extrabold leading-tight">Code that breathes, <br/>interfaces that feel.</h3>
+</div>
+<p class="text-on-surface-variant text-lg leading-relaxed font-body">
+                    I believe in the marriage of engineering precision and aesthetic elegance. My approach to Android development focuses on high-performance native applications that prioritize user ergonomics and fluid motion. 
+                </p>
+<div class="grid grid-cols-2 gap-8 pt-4">
+<div class="space-y-2">
+<h4 class="font-label text-on-surface text-sm font-bold uppercase tracking-widest">Performance</h4>
+<p class="text-on-surface-variant text-sm">Optimizing frame rates and memory footprint for buttery-smooth interactions.</p>
+</div>
+<div class="space-y-2">
+<h4 class="font-label text-on-surface text-sm font-bold uppercase tracking-widest">Architecture</h4>
+<p class="text-on-surface-variant text-sm">Scalable, testable codebases built on Solid principles and modular design.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Grid -->
+<section class="py-32 px-8 bg-surface-container-low" id="projects">
+<div class="max-w-7xl mx-auto space-y-16">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="space-y-4">
+<h2 class="font-label text-tertiary text-sm uppercase tracking-[0.3em]">Selected Works</h2>
+<h3 class="text-4xl md:text-6xl font-headline font-extrabold">Digital Case Studies</h3>
+</div>
+<p class="max-w-xs text-on-surface-variant font-label text-sm uppercase tracking-wider leading-relaxed">
+                        01 — 04 Archive <br/> 2023—2024 Production
+                    </p>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<!-- Project Card 1 -->
+<div class="group relative flex flex-col gap-6">
+<div class="aspect-[16/10] bg-surface-container-high rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Minimalist smartphone app interface showing sleek financial dashboard with violet and blue gradient charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdUtyh5xEduMDPaQZka0cpL-P12TXv99cLKlL3pMbDmmSKdyPr3aV3gktHvLLjHMFYcnvJpg756jKtwkOqLYjWm37-yAUvI-QrcHvSDdOWxjjbiIWzqi8FrmDctUJw1PodDQBDAp8GF9jtmksuYqrWn8os2nN0At66oE3UEQpHvgL9X3F9jGUa8FIqM22U4uY1ka8EzcIhdAzeIpBSUW_RuKKEFF9HCcux4oXA2e3RqCi_cjXIsyCQHLAe9vulOU78P3HHxy_9xWTL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-primary">Fintech</span>
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-secondary">Jetpack Compose</span>
+</div>
+</div>
+<div class="flex justify-between items-start px-2">
+<div class="space-y-1">
+<h4 class="text-2xl font-headline font-bold text-on-surface">Lumina Wallet</h4>
+<p class="text-on-surface-variant font-body">Cryptocurrency portfolio manager with real-time biometric security.</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_outward</span>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="group relative flex flex-col gap-6 md:mt-16">
+<div class="aspect-[16/10] bg-surface-container-high rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Conceptual mobile app UI for a smart home system with soft glow glassmorphism controls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjLPDCYldQN8aLuEQcw0KryquhH5uC5ttQsiNP1hPFIFOiBATchGYz5FjRfRzt0RvnNJZwDO4TYYhoKq6wsxcyG_dXNuGWEA7pnUAOvMHfDkBE9lxswyhO6jPa8w9kpvXy1iqmJsFtxQXD-GGbVp3V520orbqCNojn1RhS7MIW4gl5NjHYO2kp8JWOkORnYqDt4hBS1EdOHHxSqXRZyAA-IUL_swUF5wA4GSu6Oe3tOFeyFLXc9Tn6RPO0OiAt41BoTqwEFraNCQCZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-primary">IoT</span>
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-secondary">Bluetooth Low Energy</span>
+</div>
+</div>
+<div class="flex justify-between items-start px-2">
+<div class="space-y-1">
+<h4 class="text-2xl font-headline font-bold text-on-surface">Nexus Home</h4>
+<p class="text-on-surface-variant font-body">Seamless integration for smart home devices with zero-latency response.</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">arrow_outward</span>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="group relative flex flex-col gap-6">
+<div class="aspect-[16/10] bg-surface-container-high rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Close up of high precision code editor screen with syntax highlighting in indigo and cyan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_2dtLJRfjcXoMUPPGRpaojgo0y8HkS5akReRE8JNEn254fMtJB5xb5lHzJlXYcWyAhvKz5Ssmo15QULD03JPohnkSmIhP2TZM1ahU2704zS1JSjCqIlJ0tlXi7vEbz0txRpeAKZpWUkKXRzAIjwOOfBX8h-N7oxSpltFYpvkc-GqSY6NkRJ_r23rIQJpfmd322LdS5Hj4sdrcWx8xvcmcON3N4oyPoGhbFDaKs46c1FEGUybiOTxvuRK20cjhDr9QZuO43y72F7G_"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-primary">Developer Tool</span>
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-secondary">Kotlin DSL</span>
+</div>
+</div>
+<div class="flex justify-between items-start px-2">
+<div class="space-y-1">
+<h4 class="text-2xl font-headline font-bold text-on-surface">Arch-Gen</h4>
+<p class="text-on-surface-variant font-body">Architecture pattern generator for rapid Android prototyping.</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-tertiary transition-colors">arrow_outward</span>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="group relative flex flex-col gap-6 md:mt-16">
+<div class="aspect-[16/10] bg-surface-container-high rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Creative workspace with tablet displaying a colorful art application UI" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAix7RjJ2II58Fsc1wWB5Yh_a-HAlXNwxCufv13vF9Tzso_HT_WufiBNqc9r3Oncx4YZ7gK6qdy-xCCo5cfwG2-DNDJpN9Y2qXiL1XVC8qSFqhLhdDgft8ubGEQQC1Uwv0uYi5k98dp8wCPwF4uVHwfXxZdVcCmMJbJhYEmdBf3V8tKQbQBzt1J-ZKbflo-pD0hJ_n_Zk6WGur3XkG72ko8YhDMNA5YfhkQ8VpfloU3ENUK1nXkhRWWvWaTYx9RyL04x1kkpkweNl0k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute bottom-6 left-6 flex gap-2">
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-primary">Lifestyle</span>
+<span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur-md rounded-full font-label text-[10px] uppercase tracking-widest text-secondary">Canvas API</span>
+</div>
+</div>
+<div class="flex justify-between items-start px-2">
+<div class="space-y-1">
+<h4 class="text-2xl font-headline font-bold text-on-surface">Vivid Canvas</h4>
+<p class="text-on-surface-variant font-body">A high-performance sketching app built with custom Android drawing layers.</p>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack Bento -->
+<section class="py-32 px-8 max-w-7xl mx-auto" id="stack">
+<div class="text-center space-y-4 mb-20">
+<h2 class="font-label text-primary text-sm uppercase tracking-[0.3em]">The Toolkit</h2>
+<h3 class="text-4xl md:text-5xl font-headline font-extrabold">Technical Foundation</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<!-- Large Bento Item -->
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-low p-10 rounded-xl flex flex-col justify-between group hover:bg-surface-container-high transition-all">
+<div class="space-y-6">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">terminal</span>
+</div>
+<h4 class="text-3xl font-headline font-bold">Native Mastery</h4>
+<p class="text-on-surface-variant font-body leading-relaxed">Deep expertise in Kotlin and the Android SDK, leveraging modern declarative UI frameworks like Jetpack Compose to build high-performance applications.</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-8">
+<span class="px-4 py-1.5 bg-surface-container-highest rounded-full font-label text-xs tracking-widest text-outline-variant">KOTLIN</span>
+<span class="px-4 py-1.5 bg-surface-container-highest rounded-full font-label text-xs tracking-widest text-outline-variant">SDK v34+</span>
+<span class="px-4 py-1.5 bg-surface-container-highest rounded-full font-label text-xs tracking-widest text-outline-variant">COMPOSE</span>
+</div>
+</div>
+<!-- Small Bento Items -->
+<div class="bg-surface-container-low p-8 rounded-xl space-y-4 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-secondary text-4xl">database</span>
+<h4 class="text-xl font-headline font-bold">Persistence</h4>
+<p class="text-sm text-on-surface-variant font-body">Room, SQLDelight, and DataStore for reliable local data handling.</p>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl space-y-4 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-tertiary text-4xl">cloud_sync</span>
+<h4 class="text-xl font-headline font-bold">Networking</h4>
+<p class="text-sm text-on-surface-variant font-body">Retrofit, Ktor, and Protobuf for efficient API communication.</p>
+</div>
+<!-- Wide Bento Item -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-xl flex items-center gap-8 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-primary-fixed text-5xl">architecture</span>
+<div>
+<h4 class="text-xl font-headline font-bold">Clean Architecture</h4>
+<p class="text-sm text-on-surface-variant font-body">Domain-driven design ensuring modularity and testability across large-scale projects.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact CTA -->
+<section class="py-32 px-8 text-center relative overflow-hidden" id="contact">
+<div class="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-primary/5"></div>
+<div class="max-w-3xl mx-auto space-y-12">
+<div class="space-y-4">
+<h2 class="font-label text-secondary text-sm uppercase tracking-[0.4em]">Ready to build?</h2>
+<h3 class="text-5xl md:text-7xl font-headline font-extrabold leading-tight">Let's craft your next <span class="text-glow text-primary">vision.</span></h3>
+</div>
+<p class="text-xl text-on-surface-variant font-body">
+                    Currently available for selected freelance projects and architectural consulting.
+                </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-8">
+<a class="w-full md:w-auto bg-gradient-to-r from-primary to-secondary text-on-primary-fixed px-10 py-4 rounded-md font-bold tracking-widest uppercase text-sm hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20" href="mailto:hello@faseed.dev">
+                        Inquire Project
+                    </a>
+<a class="w-full md:w-auto px-10 py-4 border border-outline-variant hover:border-outline text-on-surface font-label text-sm tracking-widest uppercase rounded-md transition-all" href="#">
+                        View GitHub
+                    </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-8 border-t border-white/5 bg-[#0e0e13]">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-lg font-black text-on-surface tracking-tighter">faseed.dev</span>
+<p class="font-['Space_Grotesk'] text-[10px] uppercase tracking-[0.3em] text-slate-500">© 2024 faseed.dev — Engineered with Precision</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-slate-500 hover:text-indigo-300 hover:translate-y-[-2px] transition-all" href="#">GitHub</a>
+<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-slate-500 hover:text-indigo-300 hover:translate-y-[-2px] transition-all" href="#">LinkedIn</a>
+<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-slate-500 hover:text-indigo-300 hover:translate-y-[-2px] transition-all" href="#">Twitter</a>
+<a class="font-['Space_Grotesk'] text-sm uppercase tracking-widest text-slate-500 hover:text-indigo-300 hover:translate-y-[-2px] transition-all" href="#">Email</a>
+</div>
+</div>
+</footer>
+<style>
+        @keyframes infinite-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .animate-infinite-scroll {
+            animation: infinite-scroll 40s linear infinite;
+        }
+    </style>
+</body></html>
