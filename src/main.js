@@ -18,6 +18,44 @@ document.getElementById('contact-root').innerHTML = contactHtml;
 document.getElementById('footer-root').innerHTML = footerHtml;
 
 // ================================================
+// HERO TEXT ANIMATIONS
+// ================================================
+
+// H1 — Split into characters for wave reveal
+const heroWave = document.querySelector('.hero-wave');
+if (heroWave) {
+  const text = heroWave.textContent.trim();
+  heroWave.innerHTML = '';
+  heroWave.style.perspective = '600px';
+
+  let charIndex = 0;
+  for (const char of text) {
+    if (char === ' ') {
+      const space = document.createElement('span');
+      space.className = 'char-space';
+      heroWave.appendChild(space);
+    } else {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = char;
+      // Stagger: 50ms per character for smooth wave
+      span.style.animationDelay = `${0.1 + charIndex * 0.05}s`;
+      heroWave.appendChild(span);
+      charIndex++;
+    }
+  }
+}
+
+// H2 — Trigger gradient flow animation
+const heroGradient = document.querySelector('.hero-gradient');
+if (heroGradient) {
+  // Small delay so it starts after the H1 wave begins
+  requestAnimationFrame(() => {
+    heroGradient.classList.add('animate-in');
+  });
+}
+
+// ================================================
 // SCROLL REVEAL OBSERVER
 // ================================================
 const revealElements = document.querySelectorAll('.reveal');
