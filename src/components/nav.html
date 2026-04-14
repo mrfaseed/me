@@ -1,0 +1,77 @@
+<div class="ambient-glow"></div>
+
+<!-- Navigation Island -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 floating-nav px-4 md:px-10 py-3 md:py-4 rounded-2xl md:rounded-full flex items-center justify-between md:justify-start gap-0 md:gap-8 shadow-2xl max-w-4xl w-[92%] md:w-[90%] backdrop-blur-md">
+
+    <!-- Logo -->
+    <a href="#home" class="font-bold text-xl tracking-tight text-white flex items-center gap-2">
+        Faseed / Android
+    </a>
+
+    <!-- Divider -->
+    <div class="w-px h-5 bg-surfaceBorder nav-divider-desktop"></div>
+
+    <!-- Nav Links -->
+    <div class="flex gap-6 text-sm font-medium text-textMuted hidden md:flex">
+        <a href="#projects" class="hover:text-white transition-colors">Work/projects</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="ml-auto flex items-center gap-3">
+
+        <!-- Resume -->
+        <a href="/resume.pdf" download
+            class="nav-resume-desktop border border-surfaceBorder text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
+            Download Resume
+        </a>
+
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+            <div class="hamburger-glow"></div>
+            <div class="line-group">
+                <div class="line line-1"></div>
+                <div class="line line-2"></div>
+                <div class="line line-3"></div>
+            </div>
+        </button>
+
+    </div>
+</nav>
+
+<!-- Mobile Navigation Overlay -->
+<div class="mobile-nav-overlay" id="mobileNav">
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+    <div class="mobile-nav-panel">
+        <!-- Floating gradient orbs -->
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
+        <div class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link"><span class="nav-num">01</span>Home</a>
+            <a href="#projects" class="mobile-nav-link"><span class="nav-num">02</span>Projects</a>
+            <a href="#about" class="mobile-nav-link"><span class="nav-num">03</span>About</a>
+            <a href="#contact" class="mobile-nav-link"><span class="nav-num">04</span>Contact</a>
+        </div>
+
+        <div class="mobile-nav-cta">
+            <a href="mailto:hello@faseed.dev"
+                class="bg-white text-black px-6 py-3 rounded-full font-bold text-center flex items-center justify-center gap-2"
+                style="font-family:'Outfit',sans-serif;">
+                <span class="material-symbols-rounded">mail</span> Email Me
+            </a>
+            <a href="/resume.pdf" download
+                class="border border-white/20 text-white px-6 py-3 rounded-full font-bold text-center flex items-center justify-center gap-2"
+                style="font-family:'Outfit',sans-serif;">
+                <span class="material-symbols-rounded">description</span> Resume
+            </a>
+        </div>
+
+        <div class="mobile-nav-social">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+        </div>
+    </div>
+</div>
