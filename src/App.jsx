@@ -4,15 +4,16 @@ import Home from './components/Home.jsx';
 import Projects from './components/Projects.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
-
-// Import loader styles if there's any global need, though loader is in loader.html originally.
+import Loader from './components/Loader.jsx';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
-  const [fadeLoader, setFadeLoader] = useState(false);
 
+  // Start scroll-reveal observer only after loader exits
+  // so the reveal animations play when the user actually sees the content
   useEffect(() => {
-    // Reveal Observer Logic
+    if (loading) return;
+
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -27,38 +28,16 @@ const App = () => {
 
     revealElements.forEach((el) => revealObserver.observe(el));
 
-    // Cleanup observer on unmount
     return () => {
-        revealElements.forEach((el) => revealObserver.unobserve(el));
+      revealElements.forEach((el) => revealObserver.unobserve(el));
     };
-  }, []); // Run on mount
-
-  useEffect(() => {
-    // Loader Logic port
-    const timer1 = setTimeout(() => {
-      setFadeLoader(true);
-    }, 2300);
-
-    const timer2 = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
-  }, []);
+  }, [loading]);
 
   return (
     <>
-      {loading && (
-        <div id="loader" className={`fixed inset-0 z-[100] bg-black flex items-center justify-center transition-opacity duration-700 ${fadeLoader ? 'opacity-0 pointer-events-none' : ''}`}>
-             <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      )}
-      
+      {loading && <Loader onComplete={() => setLoading(false)} />}
+
       <Nav />
-      {/* Background elements are handled via tailwind classes on body, but we need the main wrapper */}
       <main className="max-w-6xl mx-auto px-6 pt-32 pb-24 space-y-24 relative overflow-hidden md:overflow-visible">
         <Home />
         <Projects />

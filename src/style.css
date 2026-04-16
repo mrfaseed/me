@@ -10,6 +10,8 @@ body {
     background-color: #0a0a0c;
     color: #f8fafc;
     overflow-x: hidden;
+    user-select: none;
+    
 }
 
 /* Ambient Glow Background */
@@ -207,79 +209,111 @@ body {
 }
 
 /* ================================================
-   GLOBAL LOADER (from loader.html)
+   LIQUID FILL LOADER
    ================================================ */
-#loader {
+
+.loader-screen {
     position: fixed;
     inset: 0;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #0a0a0c;
-    z-index: 9999;
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
+    animation: loaderFadeIn 0.3s ease forwards;
 }
 
-#loader.fade-out {
-    opacity: 0;
-    visibility: hidden;
+@keyframes loaderFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Ambient glow behind text */
+.loader-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(59, 130, 246, 0.08) 0%,
+        rgba(20, 184, 166, 0.05) 40%,
+        transparent 70%
+    );
     pointer-events: none;
+    animation: glowPulse 3s ease-in-out infinite alternate;
 }
 
-#loader svg {
-    width: 90px;
-    height: 90px;
+@keyframes glowPulse {
+    0%   { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+    100% { opacity: 1;   transform: translate(-50%, -50%) scale(1.1); }
 }
 
-#hex {
-    fill: none;
-    stroke: #64ffda;
-    stroke-width: 5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 320;
-    stroke-dashoffset: 320;
-    transform: rotate(180deg);
-    transform-origin: 50% 50%;
-    animation: drawHex 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.loader-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
-#logoText {
-    fill: #64ffda;
-    font-size: 38px;
-    font-weight: 700;
-    text-anchor: middle;
-    dominant-baseline: middle;
-    opacity: 0;
-    transform: translateY(1.5px);
-    animation: fadeText 0.5s ease forwards;
-    animation-delay: 1.4s;
-    font-family: 'Inter', sans-serif;
+/* SVG scales responsively */
+.loader-text-svg {
+    width: clamp(260px, 70vw, 600px);
+    height: auto;
+    overflow: visible;
 }
 
-@keyframes drawHex {
-    to {
-        stroke-dashoffset: 0;
-    }
+/* Fill group transitions smoothly as progress increases */
+.loader-fill-group {
+    transition: transform 0.15s linear;
 }
 
-@keyframes fadeText {
-    to {
-        opacity: 1;
-    }
+/* Wave paths — GPU-accelerated horizontal slide */
+.loader-wave {
+    will-change: transform;
 }
 
-#loader.hide svg {
-    animation: implode 0.7s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+.loader-wave-1 {
+    animation: waveSlide 2.5s linear infinite;
 }
 
-@keyframes implode {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0.35);
-        opacity: 0;
-    }
+.loader-wave-2 {
+    animation: waveSlide 3.5s linear infinite reverse;
+}
+
+@keyframes waveSlide {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-600px); }
+}
+
+/* Percentage text */
+.loader-pct {
+    color: #94a3b8;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- Exit / Implode Animation ---- */
+
+.loader-exit .loader-center {
+    animation: implodeContent 0.7s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+@keyframes implodeContent {
+    0%   { transform: scale(1);   opacity: 1;   filter: blur(0); }
+    70%  { transform: scale(0.6); opacity: 0.6; filter: blur(3px); }
+    100% { transform: scale(0);   opacity: 0;   filter: blur(12px); }
+}
+
+.loader-exit {
+    animation: fadeOutBg 0.5s ease 0.3s forwards;
+}
+
+@keyframes fadeOutBg {
+    to { opacity: 0; pointer-events: none; }
 }
