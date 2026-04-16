@@ -25,7 +25,7 @@ const projectsData = [
     duration: '3 months',
     teamSize: '1 (Solo Developer)',
     status: 'Live & In Use',
-    year: '2025',
+    year: '2026 (in beta testing now)',
 
     // ── Key Features ──
     features: [
@@ -153,8 +153,8 @@ const projectsData = [
     client: 'Kalasalingam Academy of Research and Education',
     clientUrl: null,
     projectType: 'Android Application',
-    duration: '2.5 months',
-    teamSize: '2 Developers',
+    duration: '15 days',
+    teamSize: '1 (Solo Developer)',
     status: 'Completed',
     year: '2025',
 
@@ -284,10 +284,10 @@ const projectsData = [
     client: 'Academic Project / Agricultural IoT',
     clientUrl: null,
     projectType: 'IoT + Android Application',
-    duration: '2 months',
-    teamSize: '3 Members',
+    duration: '1 month',
+    teamSize: '1 (Solo Developer)',
     status: 'Completed',
-    year: '2024',
+    year: '2025',
 
     // ── Key Features ──
     features: [

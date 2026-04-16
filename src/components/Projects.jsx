@@ -68,7 +68,7 @@ const Projects = () => {
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-2xl font-bold text-white">Kare Transport tracking system</h3>
-                  <p className="text-textMuted mt-1"> An real time android application for tracking the buses from home to college and college to home.           </p>
+                  <p className="text-textMuted mt-1"> An real time android application for tracking the buses <br/> from home to college and college to home.           </p>
                 </div>
                 <Link to="/project/kare-transport" className="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-secondary group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
                   <span className="material-symbols-rounded">arrow_outward</span>
