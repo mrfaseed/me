@@ -317,3 +317,42 @@ body {
 @keyframes fadeOutBg {
     to { opacity: 0; pointer-events: none; }
 }
+
+/* ================================================
+   HOME ENTRANCE ANIMATIONS
+   ================================================ */
+
+/* Base state — hidden, shifted down, blurred */
+.home-entrance {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    filter: blur(6px);
+    transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--entrance-delay, 0s),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--entrance-delay, 0s),
+        filter 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--entrance-delay, 0s);
+}
+
+/* Entered state — fully visible */
+.home-entrance.entered {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+}
+
+/* Override opacity for floating icons — they should settle to their original low opacity */
+.home-entrance.entered[class*="opacity-10"] {
+    opacity: 0.1;
+}
+.home-entrance.entered[class*="opacity-5"] {
+    opacity: 0.05;
+}
+.home-entrance.entered[class*="opacity-[0.08]"] {
+    opacity: 0.08;
+}
+.home-entrance.entered[class*="opacity-[0.07]"] {
+    opacity: 0.07;
+}
+.home-entrance.entered[class*="opacity-[0.06]"] {
+    opacity: 0.06;
+}

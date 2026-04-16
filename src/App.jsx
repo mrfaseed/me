@@ -39,7 +39,7 @@ const App = () => {
 
       <Nav />
       <main className="max-w-6xl mx-auto px-6 pt-32 pb-24 space-y-24 relative overflow-hidden md:overflow-visible">
-        <Home />
+        <Home isLoaded={!loading} />
         <Projects />
         <Contact />
       </main>
