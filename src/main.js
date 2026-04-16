@@ -87,35 +87,78 @@ bentoCards.forEach((card) => {
 });
 
 // ================================================
-// MOBILE HAMBURGER MENU
+// CLEAR MOBILE MENU
 // ================================================
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const mobileNav = document.getElementById('mobileNav');
-const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
-const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const bar1 = document.getElementById('bar-1');
+const bar2 = document.getElementById('bar-2');
+const bar3 = document.getElementById('bar-3');
+const mobileLinks = document.querySelectorAll('.mobile-link');
 
-function toggleMobileNav() {
-  const isOpen = mobileNav.classList.toggle('open');
-  hamburgerBtn.classList.toggle('active');
-  hamburgerBtn.setAttribute('aria-expanded', isOpen);
-  document.body.style.overflow = isOpen ? 'hidden' : '';
+function toggleMobileMenu() {
+  if (!mobileMenu) return;
+  const isHidden = mobileMenu.classList.contains('hidden');
+  
+  if (!isHidden) {
+    // Close menu
+    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+    setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+    // Reset hamburger
+    if (bar1) bar1.classList.remove('translate-y-2', 'rotate-45');
+    if (bar2) bar2.classList.remove('opacity-0');
+    if (bar3) bar3.classList.remove('-translate-y-2', '-rotate-45');
+    document.body.style.overflow = '';
+  } else {
+    // Open menu
+    mobileMenu.classList.remove('hidden');
+    // small delay for transition to take effect
+    requestAnimationFrame(() => {
+        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+    });
+    // Animate hamburger
+    if (bar1) bar1.classList.add('translate-y-2', 'rotate-45');
+    if (bar2) bar2.classList.add('opacity-0');
+    if (bar3) bar3.classList.add('-translate-y-2', '-rotate-45');
+    document.body.style.overflow = 'hidden';
+  }
 }
 
-hamburgerBtn.addEventListener('click', toggleMobileNav);
-mobileNavBackdrop.addEventListener('click', toggleMobileNav);
+if (mobileBtn) {
+  mobileBtn.addEventListener('click', toggleMobileMenu);
+}
 
-// Close on link click
-mobileNavLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    if (mobileNav.classList.contains('open')) {
-      toggleMobileNav();
-    }
+if (mobileLinks) {
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (!mobileMenu.classList.contains('hidden')) {
+        toggleMobileMenu();
+      }
+    });
   });
-});
+}
 
 // Close on Escape key
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
-    toggleMobileNav();
+  if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+    toggleMobileMenu();
+  }
+});
+
+// ================================================
+// GLOBAL LOADER (from loader.html)
+// ================================================
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  if (loader) {
+    // 1) Implode Animation SVG (from loader.html)
+    setTimeout(() => {
+      loader.classList.add("hide");
+    }, 2300);
+
+    // 2) Fade out the entire loader background afterward (700ms after implode starts = 3000ms)
+    setTimeout(() => {
+      loader.classList.add("fade-out");
+    }, 3000);
   }
 });
