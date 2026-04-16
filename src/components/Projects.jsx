@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   const handleMouseMove = (e) => {
@@ -36,17 +37,23 @@ const Projects = () => {
             <div className="p-8 bento-content flex flex-col flex-1">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-white">TaskFlow App</h3>
-                  <p className="text-textMuted mt-1">Personal Productivity & Habit Tracker</p>
+                  <h3 className="text-2xl font-bold text-white">Sports Vhnsnc</h3>
+                  <p className="text-textMuted mt-1">Indoor stadium membership management system <br /> (real time project used by college <a className="text-primary" href="https://vhnsnc.edu.in/">VHNSNC</a>)</p>
                 </div>
-                <a href="#" className="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all">
+                <Link to="/project/sports-vhnsnc" className="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all">
                   <span className="material-symbols-rounded">arrow_outward</span>
-                </a>
+                </Link>
               </div>
-              <div className="mt-auto flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-primary">Kotlin</span>
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Room Database</span>
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">MVVM</span>
+              <div className="mt-auto flex items-center justify-between">
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-primary">flutter</span>
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">mysqli</span>
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">php</span>
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">dart</span>
+                </div>
+                <Link to="/project/sports-vhnsnc" className="text-xs font-mono text-primary hover:text-white transition-colors flex items-center gap-1 flex-shrink-0">
+                  View More <span className="material-symbols-rounded text-sm">arrow_forward</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -60,16 +67,22 @@ const Projects = () => {
             <div className="p-8 bento-content flex flex-col flex-1">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Weather Cast</h3>
-                  <p className="text-textMuted mt-1">Real-time dynamic weather forecasting</p>
+                  <h3 className="text-2xl font-bold text-white">Kare Transport tracking system</h3>
+                  <p className="text-textMuted mt-1"> An real time android application for tracking the buses from home to college and college to home.           </p>
                 </div>
-                <a href="#" className="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-secondary group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
+                <Link to="/project/kare-transport" className="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-secondary group-hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] transition-all">
                   <span className="material-symbols-rounded">arrow_outward</span>
-                </a>
+                </Link>
               </div>
-              <div className="mt-auto flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-secondary">Jetpack Compose</span>
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Retrofit APIs</span>
+              <div className="mt-auto flex items-center justify-between">
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-secondary">Jetpack Compose</span>
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Firebase</span>
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">IOT</span>
+                </div>
+                <Link to="/project/kare-transport" className="text-xs font-mono text-secondary hover:text-white transition-colors flex items-center gap-1 flex-shrink-0">
+                  View More <span className="material-symbols-rounded text-sm">arrow_forward</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -83,16 +96,22 @@ const Projects = () => {
             <div className="p-8 bento-content flex flex-col flex-1">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-white">UniChat</h3>
-                  <p className="text-textMuted mt-1">Campus messaging platform prototype</p>
+                  <h3 className="text-2xl font-bold text-white">Soil Monitoring System</h3>
+                  <p className="text-textMuted mt-1">an android application for monitoring the soil moisture</p>
                 </div>
-                <a href="#" className="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all">
+                <Link to="/project/soil-monitoring" className="w-10 h-10 rounded-full bg-surfaceBorder flex items-center justify-center text-white group-hover:bg-accent group-hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all">
                   <span className="material-symbols-rounded">arrow_outward</span>
-                </a>
+                </Link>
               </div>
-              <div className="mt-auto flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-accent">Firebase Auth</span>
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Firestore</span>
+              <div className="mt-auto flex items-center justify-between">
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-accent">Kotlin</span>
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">Firebase</span>
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono">IOT</span>
+                </div>
+                <Link to="/project/soil-monitoring" className="text-xs font-mono text-accent hover:text-white transition-colors flex items-center gap-1 flex-shrink-0">
+                  View More <span className="material-symbols-rounded text-sm">arrow_forward</span>
+                </Link>
               </div>
             </div>
           </div>
