@@ -88,7 +88,7 @@ const Home = ({ isLoaded }) => {
           <a href="#projects" className="bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
             See what I've built <span className="material-symbols-rounded">arrow_downward</span>
           </a>
-          <a href="https://github.com" target="_blank" rel="noreferrer" className="text-white hover:text-accent font-bold transition-colors flex items-center gap-2">
+          <a href="https://github.com/mrfaseed" target="_blank" rel="noreferrer" className="text-white hover:text-accent font-bold transition-colors flex items-center gap-2">
             View GitHub <span className="material-symbols-rounded text-sm">open_in_new</span>
           </a>
         </div>

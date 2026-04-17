@@ -1,0 +1,22 @@
+/* gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradientMove 4s linear infinite;
+}
+
+/* scroll reveal */
+.footer-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.footer-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

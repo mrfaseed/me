@@ -20,7 +20,7 @@ const Projects = () => {
             <h2 className="text-4xl lg:text-5xl font-bold">Featured Projects.</h2>
             <p className="text-textMuted mt-2 text-lg">Apps I've built while exploring Android Dev.</p>
           </div>
-          <a href="#" className="hidden md:flex items-center gap-2 text-primary font-bold hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/10">
+          <a href="https://github.com/mrfaseed" target="_blank" rel="noreferrer" className="hidden md:flex items-center gap-2 text-primary font-bold hover:text-white transition-colors bg-white/5 px-4 py-2 rounded-full border border-white/10">
             View GitHub <span className="material-symbols-rounded text-lg">arrow_outward</span>
           </a>
         </div>
