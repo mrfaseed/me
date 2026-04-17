@@ -1,8 +1,15 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import useSEO from '../hooks/useSEO';
 
 const NotFound = () => {
+  useSEO({
+    title: "404 - Page Not Found",
+    description: "The page you are looking for has drifted into an unknown sector of cyberspace.",
+    url: "https://mohamedfaseed.vercel.app/404"
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -247,6 +247,100 @@
 }
 
 /* ═══════════════════════════════════════════
+   DEVICE FRAME PREVIEW
+   ═══════════════════════════════════════════ */
+.pd-device-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -6rem;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 10;
+}
+
+.pd-device-frame {
+  width: 300px;
+  height: 620px;
+  background-color: #050505;
+  border-radius: 40px;
+  border: 4px solid #1a1a1a;
+  box-shadow: 
+    inset 0 0 0 6px #000, 
+    0 0 0 1px rgba(255,255,255,0.1),
+    0 40px 80px -20px rgba(0,0,0,0.8),
+    0 0 40px color-mix(in srgb, var(--accent, #3b82f6) 15%, transparent);
+  position: relative;
+  padding: 12px;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pd-device-frame:hover {
+  transform: translateY(-10px);
+}
+
+/* Power & Volume Buttons */
+.pd-device-frame::before {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 120px;
+  width: 3px;
+  height: 40px;
+  background: #2a2a2a;
+  border-radius: 0 4px 4px 0;
+}
+
+.pd-device-frame::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 180px;
+  width: 3px;
+  height: 80px;
+  background: #2a2a2a;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Screen */
+.pd-device-screen {
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a0c;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hole Punch Camera */
+.pd-device-camera {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background-color: #050505;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: inset 0 -1px 2px rgba(255,255,255,0.15), 0 0 0 2px #000;
+}
+
+/* Speaker Grill */
+.pd-device-speaker {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background-color: #111;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+/* ═══════════════════════════════════════════
    MAIN CONTENT AREA
    ═══════════════════════════════════════════ */
 .pd-main {

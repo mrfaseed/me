@@ -1,12 +1,22 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import projectsData from '../data/projectsData.js';
+import useSEO from '../hooks/useSEO.js';
 import '../styles/projectDetail.css';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const project = projectsData.find((p) => p.slug === slug);
+
+  // Dynamically apply perfect SEO based on the loaded project
+  useSEO({
+    title: project ? `${project.title} - Faseed` : 'Project Not Found',
+    description: project ? project.overview : 'View details of this Android application built by Faseed.',
+    url: `https://mohamedfaseed.vercel.app/project/${slug}`,
+    image: `https://mohamedfaseed.vercel.app/og-projects/${slug}.jpg`, // assumes you'll have specific OG images later
+    type: 'article'
+  });
 
   const heroRef = useRef(null);
   const containerRef = useRef(null);
@@ -155,12 +165,69 @@ const ProjectDetail = () => {
       {/* ═══════ MAIN CONTENT ═══════ */}
       <main className="pd-main" style={{ '--accent': project.color }}>
 
+        {/* ── DEVICE PREVIEW ── */}
+        <div className="pd-device-container pd-reveal pd-reveal-up">
+          <div className="pd-device-frame" style={{ '--accent': project.color }}>
+            <div className="pd-device-notch"></div>
+            <div className="pd-device-camera"></div>
+            <div className="pd-device-speaker"></div>
+            
+            <div className="pd-device-screen">
+               {/* 
+                 For a real project, you would put:
+                 <video src={project.videoUrl} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                 Since we don't have video URLs yet, we'll use a dynamic placeholder
+               */}
+               <div className="w-full h-full bg-[#0a0a0c] flex flex-col items-center justify-center relative overflow-hidden">
+                 {/* Background Gradient */}
+                 <div className="absolute inset-0 opacity-20" style={{ background: project.heroGradient }}></div>
+                 
+                 {/* App UI Placeholder */}
+                 <div className="w-[85%] h-[80%] bg-[#121217] rounded-xl border border-white/10 flex flex-col items-center p-4 shadow-2xl relative z-10">
+                   {/* Mock App Header */}
+                   <div className="w-full flex justify-between items-center mb-6 border-b border-white/5 pb-2">
+                     <span className="material-symbols-rounded text-sm">menu</span>
+                     <span className="text-xs font-bold" style={{ color: project.color }}>{project.title}</span>
+                     <span className="material-symbols-rounded text-sm">more_vert</span>
+                   </div>
+                   
+                   {/* Main Icon */}
+                   <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 shadow-inner border border-white/5" style={{ background: `color-mix(in srgb, ${project.color} 20%, transparent)` }}>
+                     <span className="material-symbols-rounded text-3xl" style={{ color: project.color }}>{project.icon}</span>
+                   </div>
+                   
+                   {/* Skeleton Text */}
+                   <div className="w-3/4 h-2 bg-white/10 rounded-full mb-3"></div>
+                   <div className="w-1/2 h-2 bg-white/10 rounded-full mb-6"></div>
+                   
+                   {/* Mock UI Cards */}
+                   <div className="w-full h-16 bg-white/5 rounded-lg mb-3 border border-white/5"></div>
+                   <div className="w-full h-16 bg-white/5 rounded-lg border border-white/5"></div>
+                   
+                   {/* Play Button Overlay */}
+                   <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] rounded-xl group cursor-pointer">
+                     <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 border border-white/20 group-hover:scale-110 group-hover:bg-white/20 transition-all">
+                       <span className="material-symbols-rounded text-white ml-1">play_arrow</span>
+                     </div>
+                   </div>
+                 </div>
+
+                 {/* Text Hint */}
+                 <div className="absolute bottom-4 left-0 right-0 text-center">
+                    <p className="text-gray-500 font-mono text-[10px]">Not ready yet, but worth the wait</p>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </div>
+
         {/* ── OVERVIEW ── */}
         <section className="pd-section pd-reveal pd-reveal-up">
           <div className="pd-section-label">
             <span className="material-symbols-rounded" style={{ color: project.color }}>info</span>
             Overview
           </div>
+          
           <div className="pd-overview-card">
             <p className="pd-overview-text">{project.overview}</p>
             {project.client && (

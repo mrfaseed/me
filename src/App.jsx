@@ -19,6 +19,8 @@ import CommandPalette from './components/CommandPalette.jsx';
 const ProjectDetail = lazy(() => import('./components/ProjectDetail.jsx'));
 const Privacy = lazy(() => import('./components/PrivacyTerms.jsx'));
 
+import useSEO from './hooks/useSEO.js';
+
 // ── Smart Scroll-to-Hash / Top on route change ──
 const ScrollManager = () => {
   const { pathname, hash } = useLocation();
@@ -43,6 +45,12 @@ const ScrollManager = () => {
 
 // ── Main portfolio layout (home page) ──
 const PortfolioHome = ({ loading }) => {
+  useSEO({
+    title: "Faseed - Android Developer",
+    description: "Faseed — Android Developer. I design and build smooth Android apps with real-world performance.",
+    url: "https://mohamedfaseed.vercel.app"
+  });
+
   useEffect(() => {
     if (loading) return;
 

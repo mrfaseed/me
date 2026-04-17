@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import useSEO from '../hooks/useSEO';
 
 const PrivacyTerms = () => {
+  useSEO({
+    title: "Privacy & Terms - Faseed",
+    description: "Privacy policy and terms of service for Faseed's developer portfolio and Android applications.",
+    url: "https://mohamedfaseed.vercel.app/privacy-terms"
+  });
+
   return (
     <div className="relative min-h-screen bg-[#020c1b] text-white overflow-hidden fade-in">
 

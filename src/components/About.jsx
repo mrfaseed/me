@@ -1,6 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const timelineData = [
+  {
+    year: '2023',
+    title: 'The Beginning',
+    desc: 'Started my BCA degree. Took my first deep dive into programming concepts, logical thinking, and writing basic algorithms.',
+    icon: 'school',
+    color: 'text-secondary',
+    bg: 'bg-secondary/10',
+    border: 'border-secondary/20',
+    shadow: 'shadow-[0_0_20px_rgba(20,184,166,0.2)]'
+  },
+  {
+    year: '2024',
+    title: 'Discovering Android',
+    desc: 'Found my passion for mobile development. Learned Kotlin and Android Studio, and started building my very first utility apps.',
+    icon: 'android',
+    color: 'text-green-400',
+    bg: 'bg-green-400/10',
+    border: 'border-green-400/20',
+    shadow: 'shadow-[0_0_20px_rgba(74,222,128,0.2)]'
+  },
+  {
+    year: '2025',
+    title: 'Real World Engineering',
+    desc: 'Shifted from tutorials to real products. Built the Soil Monitoring and Kare Transport apps using Firebase, RoomDB, and modern architecture.',
+    icon: 'rocket_launch',
+    color: 'text-primary',
+    bg: 'bg-primary/10',
+    border: 'border-primary/20',
+    shadow: 'shadow-[0_0_20px_rgba(59,130,246,0.2)]'
+  },
+  {
+    year: '2026',
+    title: 'Looking Forward',
+    desc: 'Graduating soon! Currently seeking junior roles and internships to learn from senior engineers and contribute to scale.',
+    icon: 'work',
+    color: 'text-accent',
+    bg: 'bg-accent/10',
+    border: 'border-accent/20',
+    shadow: 'shadow-[0_0_20px_rgba(168,85,247,0.2)]'
+  }
+];
 
 const About = () => {
+  const [activeTimeline, setActiveTimeline] = useState(2); // Default to 2025
+
   const handleMouseMove = (e) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
@@ -230,7 +276,85 @@ const About = () => {
         </div>
       </div>
 
-      {/* ── Row 3: Seeking Opportunities — Full Width CTA ── */}
+      {/* ── Row 3: Interactive Journey Timeline ── */}
+      <div
+        className="bento-card p-8 md:p-10 reveal relative overflow-hidden"
+        style={{ transitionDelay: '200ms' }}
+        onMouseMove={handleMouseMove}
+      >
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-white/[0.02] to-transparent rounded-bl-full pointer-events-none" />
+
+        <h3 className="text-xl font-bold flex items-center gap-3 text-white mb-8">
+          <span className="material-symbols-rounded text-accent">timeline</span>
+          The Journey
+        </h3>
+
+        <div className="flex flex-col md:flex-row gap-8 min-h-[220px]">
+          {/* Timeline Nav Tabs */}
+          <div className="flex flex-row md:flex-col gap-2 md:gap-4 border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-8 overflow-x-auto md:overflow-visible scrollbar-hide flex-shrink-0">
+            {timelineData.map((item, i) => {
+              const isActive = activeTimeline === i;
+              return (
+                <button
+                  key={item.year}
+                  onClick={() => setActiveTimeline(i)}
+                  className={`group relative flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 whitespace-nowrap text-left ${
+                    isActive ? 'bg-white/10 text-white' : 'text-gray-500 hover:bg-white/5 hover:text-gray-300'
+                  }`}
+                >
+                  {/* Indicator Dot (Desktop Only) */}
+                  {isActive && (
+                    <motion.div 
+                      layoutId="timeline-indicator"
+                      className={`hidden md:block absolute -right-[33px] w-2 h-2 rounded-full ${item.bg.replace('/10', '')} ${item.shadow}`}
+                    />
+                  )}
+                  
+                  <span className={`material-symbols-rounded text-xl transition-transform duration-300 ${isActive ? item.color + ' scale-110' : ''}`}>
+                    {item.icon}
+                  </span>
+                  <span className={`font-mono font-bold tracking-wider ${isActive ? 'text-white' : ''}`}>
+                    {item.year}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Timeline Content View */}
+          <div className="flex-1 flex flex-col justify-center relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTimeline}
+                initial={{ opacity: 0, y: 15, filter: 'blur(4px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -15, filter: 'blur(4px)' }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="space-y-4"
+              >
+                <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${timelineData[activeTimeline].bg} ${timelineData[activeTimeline].border} border ${timelineData[activeTimeline].shadow}`}>
+                  <span className={`material-symbols-rounded text-sm ${timelineData[activeTimeline].color}`}>
+                    {timelineData[activeTimeline].icon}
+                  </span>
+                  <span className={`text-xs font-bold tracking-widest uppercase ${timelineData[activeTimeline].color}`}>
+                    Chapter {activeTimeline + 1}
+                  </span>
+                </div>
+                
+                <h3 className="text-3xl md:text-4xl font-bold text-white">
+                  {timelineData[activeTimeline].title}
+                </h3>
+                
+                <p className="text-textMuted leading-relaxed text-lg max-w-2xl">
+                  {timelineData[activeTimeline].desc}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Row 4: Seeking Opportunities — Full Width CTA ── */}
       <div
         className="bento-card p-8 md:p-12 reveal relative overflow-hidden !bg-gradient-to-r from-primary/[0.06] via-surface to-secondary/[0.06]"
         style={{ transitionDelay: '200ms' }}
