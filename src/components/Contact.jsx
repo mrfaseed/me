@@ -106,10 +106,10 @@ const Contact = () => {
             { name: "Compose", icon: "widgets", color: "text-secondary", borderColor: "group-hover:border-secondary/50", glow: "group-hover:shadow-[0_0_30px_rgba(20,184,166,0.15)]" },
             { name: "Android", icon: "smartphone", color: "text-green-400", borderColor: "group-hover:border-green-400/50", glow: "group-hover:shadow-[0_0_30px_rgba(74,222,128,0.15)]" },
             { name: "Firebase", icon: "local_fire_department", color: "text-orange-500", borderColor: "group-hover:border-orange-500/50", glow: "group-hover:shadow-[0_0_30px_rgba(249,115,22,0.15)]" },
-            { name: "Room DB", icon: "storage", color: "text-indigo-400", borderColor: "group-hover:border-indigo-400/50", glow: "group-hover:shadow-[0_0_30px_rgba(129,140,248,0.15)]" },
+            { name: "MySqli", icon: "storage", color: "text-indigo-400", borderColor: "group-hover:border-indigo-400/50", glow: "group-hover:shadow-[0_0_30px_rgba(129,140,248,0.15)]" },
             { name: "Java", icon: "coffee", color: "text-red-400", borderColor: "group-hover:border-red-400/50", glow: "group-hover:shadow-[0_0_30px_rgba(248,113,113,0.15)]" },
             { name: "Git", icon: "account_tree", color: "text-orange-400", borderColor: "group-hover:border-orange-400/50", glow: "group-hover:shadow-[0_0_30px_rgba(251,146,60,0.15)]" },
-            { name: "UI/UX", icon: "palette", color: "text-pink-400", borderColor: "group-hover:border-pink-400/50", glow: "group-hover:shadow-[0_0_30px_rgba(244,114,182,0.15)]" },
+            { name: "PHP", icon: "code", color: "text-pink-400", borderColor: "group-hover:border-pink-400/50", glow: "group-hover:shadow-[0_0_30px_rgba(244,114,182,0.15)]" },
           ].map((skill, index) => (
             <div 
               key={index}
