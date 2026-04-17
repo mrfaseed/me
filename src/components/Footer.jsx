@@ -66,7 +66,7 @@ const Footer = () => {
               {["Projects", "About", "Contact"].map((item) => (
                 <li key={item}>
                   <a
-                    href={`#${item.toLowerCase()}`}
+                    href={`/#${item.toLowerCase()}`}
                     className="group inline-block transition"
                   >
                     <span className="group-hover:text-white transition">
@@ -133,11 +133,13 @@ const Footer = () => {
         </div>
 
         {/* bottom */}
-        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-          <p>© 2024 Faseed. Crafted with precision. <br/> Some components inspired by open-source.</p>
-          <p className="hover:text-white transition">
-            Built with ❤️ using React + Tailwind
-          </p>
+        <div className="border-t border-white/10 mt-10 mb-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+          <p className="text-center md:text-left">
+  <span className="block md:inline">© 2025 - 2026</span>
+  <span className="block md:inline md:ml-2">
+    Designed & developed by Faseed
+  </span>
+</p>
 
            <a
       href="/privacy-terms"

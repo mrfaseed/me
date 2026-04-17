@@ -34,20 +34,20 @@ const Nav = () => {
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 floating-nav px-4 md:px-10 py-3 md:py-4 rounded-2xl md:rounded-full flex items-center justify-between w-[92%] md:w-[90%] max-w-4xl shadow-2xl">
         
         {/* Logo */}
-        <a href="#home" className="font-bold text-xl tracking-tight text-white flex items-center gap-2">
+        <a href="/#home" className="font-bold text-xl tracking-tight text-white flex items-center gap-2">
           Faseed / Android
         </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
-          <a href="#projects" className="hover:text-white transition-colors">Work/projects</a>
-          <a href="#about" className="hover:text-white transition-colors">About</a>
-          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+          <a href="/#projects" className="hover:text-white transition-colors">Work/projects</a>
+          <a href="/#about" className="hover:text-white transition-colors">About</a>
+          <a href="/#contact" className="hover:text-white transition-colors">Contact</a>
         </div>
 
         {/* Right Actions Desktop */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="#contact" className="border border-white/10 text-white px-5 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
+          <a href="/#contact" className="border border-white/10 text-white px-5 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
             Let's Talk
           </a>
         </div>
@@ -70,11 +70,11 @@ const Nav = () => {
         className={`fixed inset-0 z-40 bg-[#0a0a0c]/98 backdrop-blur-xl flex flex-col items-center justify-center transition-opacity duration-300 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
         <div className="flex flex-col items-center gap-8 text-2xl font-medium text-white">
-          <a href="#home" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-blue-400 transition-colors">Home</a>
-          <a href="#projects" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-teal-400 transition-colors">Projects</a>
-          <a href="#about" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-purple-400 transition-colors">About</a>
-          <a href="#contact" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-blue-400 transition-colors">Contact</a>
-          <a href="#contact" onClick={() => setIsMenuOpen(false)} className="mobile-link mt-6 px-8 py-3 rounded-full border border-white/20 text-lg hover:bg-white hover:text-black transition-all">
+          <a href="/#home" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-blue-400 transition-colors">Home</a>
+          <a href="/#projects" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-teal-400 transition-colors">Projects</a>
+          <a href="/#about" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-purple-400 transition-colors">About</a>
+          <a href="/#contact" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-blue-400 transition-colors">Contact</a>
+          <a href="/#contact" onClick={() => setIsMenuOpen(false)} className="mobile-link mt-6 px-8 py-3 rounded-full border border-white/20 text-lg hover:bg-white hover:text-black transition-all">
             Let's Talk
           </a>
         </div>
