@@ -48,24 +48,24 @@ const Home = ({ isLoaded }) => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-primary/10 rounded-full blur-[100px] md:blur-[150px] pointer-events-none mix-blend-screen -z-10"></div>
 
       {/* Left Floating Background Icons */}
-      <div className={`hidden lg:flex absolute left-[2%] xl:left-[8%] top-[15%] opacity-10 animate-drift-left pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '0.6s' }}>
+      <div className={`flex lg:flex absolute left-[2%] xl:left-[8%] top-[15%] opacity-10 animate-drift-left pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '0.6s' }}>
         <span className="material-symbols-rounded text-[90px]">android</span>
       </div>
-      <div className={`hidden lg:flex absolute left-[8%] xl:left-[12%] top-[60%] opacity-5 animate-drift-left-slow pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '0.8s' }}>
+      <div className={`flex lg:flex absolute left-[8%] xl:left-[12%] top-[60%] opacity-5 animate-drift-left-slow pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '0.8s' }}>
         <span className="material-symbols-rounded text-[70px]">smartphone</span>
       </div>
-      <div className={`hidden lg:flex absolute left-[1%] xl:left-[4%] top-[80%] opacity-[0.07] animate-drift-left pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '1.0s' }}>
+      <div className={`flex lg:flex absolute left-[1%] xl:left-[4%] top-[80%] opacity-[0.07] animate-drift-left pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '1.0s' }}>
         <span className="material-symbols-rounded text-[110px]">code</span>
       </div>
 
       {/* Right Floating Background Icons */}
-      <div className={`hidden lg:flex absolute right-[5%] xl:right-[10%] top-[25%] opacity-[0.08] animate-drift-right pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '0.7s' }}>
+      <div className={`flex lg:flex absolute right-[5%] xl:right-[10%] top-[25%] opacity-[0.08] animate-drift-right pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '0.7s' }}>
         <span className="material-symbols-rounded text-[100px]">widgets</span>
       </div>
-      <div className={`hidden lg:flex absolute right-[10%] xl:right-[15%] top-[65%] opacity-[0.06] animate-drift-right-slow pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '0.9s' }}>
+      <div className={`flex lg:flex absolute right-[10%] xl:right-[15%] top-[65%] opacity-[0.06] animate-drift-right-slow pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '0.9s' }}>
         <span className="material-symbols-rounded text-[80px]">developer_board</span>
       </div>
-      <div className={`hidden lg:flex absolute right-[2%] xl:right-[6%] top-[85%] opacity-5 animate-drift-right pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '1.1s' }}>
+      <div className={`flex lg:flex absolute right-[2%] xl:right-[6%] top-[85%] opacity-5 animate-drift-right pointer-events-none text-white select-none home-entrance ${isLoaded ? 'entered' : ''}`} style={{ '--entrance-delay': '1.1s' }}>
         <span className="material-symbols-rounded text-[60px]">devices</span>
       </div>
 

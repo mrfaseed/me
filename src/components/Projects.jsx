@@ -140,8 +140,8 @@ const Projects = () => {
           </div>
           <div>
             <h3 className="text-xl font-bold text-white">Education</h3>
-            <p className="text-textMuted text-sm mt-2">Bachelor of engineering (BE)</p>
-            <p className="text-primary font-mono text-xs mt-1">2026</p>
+            <p className="text-textMuted text-sm mt-2">Bachelor of Computer Application (BCA)</p>
+            <p className="text-primary font-mono text-xs mt-1">2023 - 2026</p>
           </div>
         </div>
 
@@ -155,7 +155,7 @@ const Projects = () => {
             software from scratch.
           </p>
           <p className="text-textMuted leading-relaxed">
-            I am actively seeking <strong className="text-white font-medium">junior roles and internships</strong>
+            I am actively seeking <strong className="text-white font-medium">junior roles and internships </strong>
             where I can write clean code, learn from experienced mentors, and contribute to real-world products.
           </p>
         </div>
