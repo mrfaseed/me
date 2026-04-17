@@ -163,24 +163,22 @@ body {
 }
 
 /* ================================================
-   SCROLLBAR
+   SCROLLBAR — Hidden (replaced by ScrollEnergy)
    ================================================ */
 
+/* Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-    width: 8px;
+    display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: #0a0a0c;
+/* Firefox */
+html {
+    scrollbar-width: none;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #23232a;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #3f3f46;
+/* IE / legacy Edge */
+body {
+    -ms-overflow-style: none;
 }
 
 /* ================================================

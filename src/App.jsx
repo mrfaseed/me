@@ -10,6 +10,7 @@ import Footer from './components/Footer.jsx';
 import Loader from './components/Loader.jsx';
 import ProjectDetail from './components/ProjectDetail.jsx';
 import Privacy from './components/PrivacyTerms.jsx';
+import ScrollEnergy from './components/ScrollEnergy.jsx';
 
 
 // ── Scroll-to-top on route change ──
@@ -77,7 +78,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-   
+      <ScrollEnergy />
+
 
       <Routes>
 
