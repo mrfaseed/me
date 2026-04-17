@@ -12,7 +12,7 @@ const projectsData = [
     color: '#3b82f6',          // primary blue
     colorName: 'primary',
     gradient: 'from-blue-500 to-cyan-400',
-    heroGradient: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #1e3a5f 100%)',
+    heroGradient: 'linear-gradient(135deg, #3b82f6 0%, #060 dsxz. tb6d4 50%, #1e3a5f 100%)',
 
     // ── Overview ──
     overview:
