@@ -33,3 +33,25 @@
     transform: translateY(0);
   }
 }
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  width: 4px;
+  height: 4px;
+  background: rgba(34, 211, 238, 0.4); /* cyan */
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}

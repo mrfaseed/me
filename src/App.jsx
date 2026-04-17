@@ -4,11 +4,13 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Nav from './components/Nav.jsx';
 import Home from './components/Home.jsx';
 import Projects from './components/Projects.jsx';
+import About from './components/About.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import Loader from './components/Loader.jsx';
 import ProjectDetail from './components/ProjectDetail.jsx';
 import Privacy from './components/PrivacyTerms.jsx';
+
 
 // ── Scroll-to-top on route change ──
 const ScrollToTop = () => {
@@ -51,6 +53,7 @@ const PortfolioHome = ({ loading }) => {
       <main className="max-w-6xl mx-auto px-6 pt-32 pb-24 space-y-24 relative overflow-hidden md:overflow-visible">
         <Home isLoaded={!loading} />
         <Projects />
+        <About />
         <Contact />
       </main>
       <Footer />
@@ -74,6 +77,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
+   
 
       <Routes>
 

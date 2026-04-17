@@ -47,8 +47,8 @@ const Nav = () => {
 
         {/* Right Actions Desktop */}
         <div className="hidden md:flex items-center gap-3">
-          <a href="/resume.pdf" download className="border border-white/10 text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
-            Download Resume
+          <a href="#contact" className="border border-white/10 text-white px-5 py-1.5 rounded-full text-sm font-medium hover:bg-white hover:text-black transition-all">
+            Let's Talk
           </a>
         </div>
 
@@ -74,8 +74,8 @@ const Nav = () => {
           <a href="#projects" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-teal-400 transition-colors">Projects</a>
           <a href="#about" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-purple-400 transition-colors">About</a>
           <a href="#contact" onClick={() => setIsMenuOpen(false)} className="mobile-link hover:text-blue-400 transition-colors">Contact</a>
-          <a href="/resume.pdf" download onClick={() => setIsMenuOpen(false)} className="mobile-link mt-6 px-8 py-3 rounded-full border border-white/20 text-lg hover:bg-white hover:text-black transition-all">
-            Download Resume
+          <a href="#contact" onClick={() => setIsMenuOpen(false)} className="mobile-link mt-6 px-8 py-3 rounded-full border border-white/20 text-lg hover:bg-white hover:text-black transition-all">
+            Let's Talk
           </a>
         </div>
       </div>

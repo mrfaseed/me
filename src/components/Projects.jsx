@@ -130,37 +130,6 @@ const Projects = () => {
 
         </div>
       </section>
-
-      {/* About / Education Bento */}
-      <section id="about" className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <div className="bento-card col-span-1 p-8 text-center flex flex-col items-center justify-center space-y-4 reveal" onMouseMove={handleMouseMove}>
-          <div className="w-16 h-16 bg-surfaceBorder rounded-2xl flex items-center justify-center rotate-3 border border-white/10">
-            <span className="material-symbols-rounded text-4xl text-secondary">school</span>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-white">Education</h3>
-            <p className="text-textMuted text-sm mt-2">Bachelor of Computer Application (BCA)</p>
-            <p className="text-primary font-mono text-xs mt-1">2023 - 2026</p>
-          </div>
-        </div>
-
-        <div className="bento-card md:col-span-2 p-8 md:p-12 flex flex-col justify-center space-y-4 reveal" style={{ transitionDelay: '100ms' }} onMouseMove={handleMouseMove}>
-          <h3 className="text-2xl font-bold flex items-center gap-3 text-white">
-            <span className="material-symbols-rounded text-primary">person_search</span> Seeking Opportunities
-          </h3>
-          <p className="text-textMuted leading-relaxed">
-            As a student, I am in a state of rapid learning. I may not have years of enterprise experience, but
-            I am incredibly fast at picking up new frameworks, reading documentation, and building functional
-            software from scratch.
-          </p>
-          <p className="text-textMuted leading-relaxed">
-            I am actively seeking <strong className="text-white font-medium">junior roles and internships </strong>
-            where I can write clean code, learn from experienced mentors, and contribute to real-world products.
-          </p>
-        </div>
-
-      </section>
     </>
   );
 };

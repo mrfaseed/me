@@ -319,6 +319,116 @@ body {
 }
 
 /* ================================================
+   CTA SECTION — Premium Styles
+   ================================================ */
+
+/* Animated gradient background */
+.cta-bg {
+    background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.08) 0%,
+        rgba(18, 18, 23, 0.95) 25%,
+        rgba(18, 18, 23, 1) 50%,
+        rgba(20, 184, 166, 0.08) 75%,
+        rgba(18, 18, 23, 0.95) 100%
+    );
+    background-size: 400% 400%;
+    animation: ctaBgShift 12s ease-in-out infinite;
+}
+
+@keyframes ctaBgShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Floating orbs movement */
+.cta-orb {
+    transition: transform 4s ease-in-out;
+}
+
+.cta-orb-1 {
+    animation: orbFloat1 8s ease-in-out infinite;
+}
+
+.cta-orb-2 {
+    animation: orbFloat2 10s ease-in-out infinite;
+}
+
+.cta-orb-3 {
+    animation: orbFloat3 6s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+@keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-25px, 15px) scale(1.05); }
+}
+
+@keyframes orbFloat3 {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+}
+
+/* Gradient text */
+.cta-gradient-text {
+    background: linear-gradient(
+        90deg,
+        #3b82f6 0%,
+        #14b8a6 30%,
+        #a855f7 60%,
+        #3b82f6 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: ctaGradientFlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes ctaGradientFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Email CTA button */
+.cta-email-btn {
+    background: #ffffff;
+    color: #000000;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 4px 24px rgba(0, 0, 0, 0.3),
+        0 0 60px rgba(59, 130, 246, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-email-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        0 8px 40px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(59, 130, 246, 0.25);
+}
+
+/* Staggered reveal animations */
+.cta-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active .cta-reveal-1 { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.reveal.active .cta-reveal-2 { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+.reveal.active .cta-reveal-3 { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+.reveal.active .cta-reveal-4 { opacity: 1; transform: translateY(0); transition-delay: 0.55s; }
+.reveal.active .cta-reveal-5 { opacity: 1; transform: translateY(0); transition-delay: 0.7s; }
+
+/* ================================================
    HOME ENTRANCE ANIMATIONS
    ================================================ */
 
