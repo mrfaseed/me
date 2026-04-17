@@ -100,6 +100,13 @@ const Footer = () => {
           <p className="hover:text-white transition">
             Built with ❤️ using React + Tailwind
           </p>
+
+           <a
+      href="/privacy-terms"
+      className="hover:text-white transition underline underline-offset-4"
+    >
+      Privacy
+    </a>
         </div>
 
       </div>

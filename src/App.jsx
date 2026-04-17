@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+
 import Nav from './components/Nav.jsx';
 import Home from './components/Home.jsx';
 import Projects from './components/Projects.jsx';
@@ -7,6 +8,7 @@ import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import Loader from './components/Loader.jsx';
 import ProjectDetail from './components/ProjectDetail.jsx';
+import Privacy from './components/PrivacyTerms.jsx';
 
 // ── Scroll-to-top on route change ──
 const ScrollToTop = () => {
@@ -19,12 +21,12 @@ const ScrollToTop = () => {
 
 // ── Main portfolio layout (home page) ──
 const PortfolioHome = ({ loading }) => {
-  // Start scroll-reveal observer only after loader exits
-  // so the reveal animations play when the user actually sees the content
+
   useEffect(() => {
     if (loading) return;
 
     const revealElements = document.querySelectorAll('.reveal');
+
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -57,15 +59,60 @@ const PortfolioHome = ({ loading }) => {
 };
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+
+  // 🔥 check if user already saw loader
+  const [loading, setLoading] = useState(() => {
+    return !localStorage.getItem("hasVisited");
+  });
+
+  // when loader finishes → remember user
+  const handleLoaderComplete = () => {
+    localStorage.setItem("hasVisited", "true");
+    setLoading(false);
+  };
 
   return (
     <BrowserRouter>
       <ScrollToTop />
-      {loading && <Loader onComplete={() => setLoading(false)} />}
+
       <Routes>
-        <Route path="/" element={<PortfolioHome loading={loading} />} />
-        <Route path="/project/:slug" element={<ProjectDetail />} />
+
+        {/* 🏠 HOME */}
+        <Route
+          path="/"
+          element={
+            loading ? (
+              <Loader onComplete={handleLoaderComplete} />
+            ) : (
+              <PortfolioHome loading={loading} />
+            )
+          }
+        />
+
+        {/* 📄 PROJECT DETAIL */}
+        <Route
+          path="/project/:slug"
+          element={
+            <>
+              <Nav />
+              <ProjectDetail />
+              <Footer />
+            </>
+          }
+        />
+
+        {/* 🔒 PRIVACY PAGE */}
+        <Route
+          path="/privacy-terms"
+          element={
+            <>
+              <Nav />
+              <Privacy />
+              <Footer />
+            </>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );
