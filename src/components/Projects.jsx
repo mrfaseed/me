@@ -123,7 +123,7 @@ const Projects = () => {
             </div>
             <h3 className="text-2xl font-bold text-white">More on GitHub</h3>
             <p className="text-textMuted mt-2 mb-8 max-w-sm">I am constantly pushing experiments, university assignments, and practice apps here.</p>
-            <a href="#" className="bg-white text-black px-6 py-3 rounded-full font-bold hover:shadow-xl transition-all flex items-center gap-2">
+            <a href="https://github.com/mrfaseed" className="bg-white text-black px-6 py-3 rounded-full font-bold hover:shadow-xl transition-all flex items-center gap-2">
               View Repositories <span className="material-symbols-rounded">arrow_forward</span>
             </a>
           </div>

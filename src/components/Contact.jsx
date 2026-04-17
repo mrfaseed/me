@@ -21,7 +21,7 @@ const Contact = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4 relative z-10">
           <a
-            href="mailto:hello@faseed.dev"
+            href="mailto:faseedmohamed6@gmail.com"
             className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform flex justify-center items-center gap-2"
           >
             <span className="material-symbols-rounded">mail</span> Email Me
