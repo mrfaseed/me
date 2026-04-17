@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./footer.css";
 
 const Footer = () => {
   const footerRef = useRef();
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const el = footerRef.current;
@@ -115,17 +116,35 @@ const Footer = () => {
               </a>
 
               {/* Email */}
-              <a
-                href="mailto:faseedmohamed6@gmail.com"
-                className="group relative w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/10 hover:scale-110 hover:-translate-y-1"
-                aria-label="Email"
-              >
-                <svg className="w-[18px] h-[18px] text-gray-400 group-hover:text-cyan-400 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                </svg>
-                <span className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-md bg-cyan-400/15 transition-opacity duration-300 pointer-events-none"></span>
-              </a>
+              <div className="relative">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigator.clipboard.writeText("faseedmohamed6@gmail.com");
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                  }}
+                  className="group relative w-10 h-10 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/10 hover:scale-110 hover:-translate-y-1"
+                  aria-label="Copy Email"
+                >
+                  {copied ? (
+                    <svg className="w-[18px] h-[18px] text-cyan-400 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  ) : (
+                    <svg className="w-[18px] h-[18px] text-gray-400 group-hover:text-cyan-400 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                  )}
+                  <span className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 blur-md bg-cyan-400/15 transition-opacity duration-300 pointer-events-none"></span>
+                </button>
+                
+                {/* Toast Notification */}
+                <div className={`absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-cyan-500/20 border border-cyan-400/30 text-cyan-400 text-[10px] rounded backdrop-blur-md whitespace-nowrap transition-all duration-300 ${copied ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}>
+                  Copied!
+                </div>
+              </div>
 
             </div>
           </div>

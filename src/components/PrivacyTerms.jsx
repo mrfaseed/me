@@ -84,7 +84,7 @@ const PrivacyTerms = () => {
 
         {/* footer */}
         <p className="text-xs text-gray-500 mt-6">
-          Last updated: 2026-04-17
+          Last updated: 17-04-2026 • 01:30 PM IST
         </p>
 
       </div>

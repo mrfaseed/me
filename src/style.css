@@ -11,7 +11,28 @@ body {
     color: #f8fafc;
     overflow-x: hidden;
     user-select: none;
-    
+    cursor: none; /* Hide default cursor for CustomCursor */
+}
+
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex="0"]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #0a0a0c, 0 0 0 4px #22d3ee;
+    border-radius: 0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Ambient Glow Background */

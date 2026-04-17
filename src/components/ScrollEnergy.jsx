@@ -70,8 +70,9 @@ const ScrollEnergy = () => {
     speedRef.current = Math.min(delta / 10, 1); // 0 → 1
     lastScrollRef.current = scrollTop;
 
-    // Spawn particles on movement
-    if (delta > 2 && canvasRef.current) {
+    // Spawn particles on movement (respect reduced motion)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion && delta > 2 && canvasRef.current) {
       const edgeX = progressRef.current * canvasRef.current.width;
       const count = Math.ceil(delta / 8);
       for (let i = 0; i < count && i < 5; i++) {

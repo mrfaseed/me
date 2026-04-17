@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Contact = () => {
+  const [copied, setCopied] = useState(false);
   return (
     <>
       {/* Call to Action — Premium Redesign */}
@@ -44,16 +45,23 @@ const Contact = () => {
           </p>
 
           {/* Email Button */}
-          <div className="cta-reveal cta-reveal-4 mt-10">
-            <a
-              href="mailto:faseedmohamed6@gmail.com"
+          <div className="cta-reveal cta-reveal-4 mt-10 relative inline-block">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText("faseedmohamed6@gmail.com");
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              }}
               className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full font-bold text-base transition-all duration-300 cta-email-btn overflow-hidden"
             >
               {/* Shine sweep */}
               <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-              <span className="material-symbols-rounded text-xl relative z-10">mail</span>
-              <span className="relative z-10">Email Me</span>
-            </a>
+              <span className="material-symbols-rounded text-xl relative z-10">{copied ? 'check' : 'mail'}</span>
+              <span className="relative z-10">{copied ? 'Email Copied!' : 'Email Me'}</span>
+            </button>
+            {/* Absolute invisible link for SEO / fallback if needed */}
+            <a href="mailto:faseedmohamed6@gmail.com" className="hidden">Email</a>
           </div>
 
           {/* Social Icons — GitHub & LinkedIn */}
