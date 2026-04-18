@@ -7,14 +7,16 @@ const Footer = () => {
   const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
-   
     const token = import.meta.env.VITE_COUNTAPI_TOKEN || "ut_poz6aPBzT80r8vy0pzrRiNFihjYSOXS0oB9GRadS";
-    console.log("catched token : ",token);
-    fetch(`https://api.countapi.xyz/hit/portfolio/${token}`)
+    fetch("https://api.counterapi.dev/v2/mohamed-faseeds-team-3787/mohamedfaseed-portfolio/up", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.value) {
-          setVisitorCount(data.value);
+        if (data && data.data && data.data.up_count !== undefined) {
+          setVisitorCount(data.data.up_count);
         }
       })
       .catch((err) => console.error("Error fetching visitor count:", err));
@@ -24,7 +26,7 @@ const Footer = () => {
     const el = footerRef.current;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
+      ([entry]) => {  
         if (entry.isIntersecting) {
           el.classList.add("footer-visible");
         }
