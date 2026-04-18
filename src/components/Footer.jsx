@@ -4,6 +4,22 @@ import "./footer.css";
 const Footer = () => {
   const footerRef = useRef();
   const [copied, setCopied] = useState(false);
+  const [loadTime, setLoadTime] = useState(null);
+
+  useEffect(() => {
+    const updateLoadTime = () => {
+      const [entry] = performance.getEntriesByType("navigation");
+      if (entry) {
+        setLoadTime(Math.round(entry.loadEventEnd || performance.now()));
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      setTimeout(updateLoadTime, 100);
+    } else {
+      window.addEventListener('load', () => setTimeout(updateLoadTime, 100));
+    }
+  }, []);
 
   useEffect(() => {
     const el = footerRef.current;
@@ -154,18 +170,26 @@ const Footer = () => {
         {/* bottom */}
         <div className="border-t border-white/10 mt-10 mb-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p className="text-center md:text-left">
-  <span className="block md:inline">© 2025 - 2026</span>
-  <span className="block md:inline md:ml-2">
-    Designed & developed by Faseed
-  </span>
-</p>
+            <span className="block md:inline">© 2025 - 2026</span>
+            <span className="block md:inline md:ml-2">
+              Designed & developed by Faseed
+            </span>
+          </p>
 
-           <a
-      href="/privacy-terms"
-      className="hover:text-white transition underline underline-offset-4"
-    >
-      Privacy
-    </a>
+          <div className="flex items-center gap-4">
+            {loadTime !== null && (
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-white/[0.03] border border-white/5 text-[10px] font-mono group hover:border-cyan-400/30 transition-colors cursor-default" title="Initial Page Load Time">
+                <span className="text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">⚡</span>
+                <span className="tracking-wide">Proudly loaded in <span className="text-cyan-400 font-bold">{loadTime}ms</span></span>
+              </div>
+            )}
+            <a
+              href="/privacy-terms"
+              className="hover:text-white transition underline underline-offset-4"
+            >
+              Privacy
+            </a>
+          </div>
         </div>
 
       </div>
