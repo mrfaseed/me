@@ -4,21 +4,20 @@ import "./footer.css";
 const Footer = () => {
   const footerRef = useRef();
   const [copied, setCopied] = useState(false);
-  const [loadTime, setLoadTime] = useState(null);
+  const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
-    const updateLoadTime = () => {
-      const [entry] = performance.getEntriesByType("navigation");
-      if (entry) {
-        setLoadTime(Math.round(entry.loadEventEnd || performance.now()));
-      }
-    };
-
-    if (document.readyState === 'complete') {
-      setTimeout(updateLoadTime, 100);
-    } else {
-      window.addEventListener('load', () => setTimeout(updateLoadTime, 100));
-    }
+   
+    const token = import.meta.env.VITE_COUNTAPI_TOKEN || "ut_poz6aPBzT80r8vy0pzrRiNFihjYSOXS0oB9GRadS";
+    console.log("catched token : ",token);
+    fetch(`https://api.countapi.xyz/hit/portfolio/${token}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.value) {
+          setVisitorCount(data.value);
+        }
+      })
+      .catch((err) => console.error("Error fetching visitor count:", err));
   }, []);
 
   useEffect(() => {
@@ -177,10 +176,10 @@ const Footer = () => {
           </p>
 
           <div className="flex items-center gap-4">
-            {loadTime !== null && (
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-white/[0.03] border border-white/5 text-[10px] font-mono group hover:border-cyan-400/30 transition-colors cursor-default" title="Initial Page Load Time">
-                <span className="text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">⚡</span>
-                <span className="tracking-wide">Proudly loaded in <span className="text-cyan-400 font-bold">{loadTime}ms</span></span>
+            {visitorCount !== null && (
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-white/[0.03] border border-white/5 text-[10px] font-mono group hover:border-cyan-400/30 transition-colors cursor-default" title="Total Website Visitors">
+                <span className="text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">👥</span>
+                <span className="tracking-wide">Total Visitors: <span className="text-cyan-400 font-bold">{visitorCount}</span></span>
               </div>
             )}
             <a
