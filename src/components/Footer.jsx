@@ -7,15 +7,12 @@ const Footer = () => {
   const [visitorCount, setVisitorCount] = useState(null);
 
   useEffect(() => {
-    const token = import.meta.env.VITE_COUNTAPI_TOKEN || "ut_poz6aPBzT80r8vy0pzrRiNFihjYSOXS0oB9GRadS";
-    fetch("https://api.counterapi.dev/v2/mohamed-faseeds-team-3787/mohamedfaseed-portfolio/up", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+    // We send a simple GET request to increment and fetch the counter.
+    // (Authorization header removed because counterapi.dev blocks it via CORS on frontends)
+    fetch("https://api.counterapi.dev/v2/mohamed-faseeds-team-3787/mohamedfaseed-portfolio/up")
       .then((res) => res.json())
       .then((data) => {
-        if (data && data.data && data.data.up_count !== undefined) {
+        if (data?.data?.up_count !== undefined) {
           setVisitorCount(data.data.up_count);
         }
       })
@@ -177,19 +174,33 @@ const Footer = () => {
             </span>
           </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             {visitorCount !== null && (
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-white/[0.03] border border-white/5 text-[10px] font-mono group hover:border-cyan-400/30 transition-colors cursor-default" title="Total Website Visitors">
-                <span className="text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">👥</span>
-                <span className="tracking-wide">Total Visitors: <span className="text-cyan-400 font-bold">{visitorCount}</span></span>
+              <div className="flex items-center gap-2.5 text-[11px] font-mono text-gray-400 hover:text-gray-200 transition-colors cursor-default" title="Total Website Views">
+                <div className="relative flex h-1.5 w-1.5 items-center justify-center">
+          
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-500"></span>
+                </div>
+                <span className="tracking-widest">
+                  {visitorCount.toLocaleString()} <span className="opacity-50">People explored my work</span>
+                </span>
               </div>
             )}
-            <a
-              href="/privacy-terms"
-              className="hover:text-white transition underline underline-offset-4"
-            >
-              Privacy
-            </a>
+            <div className="flex items-center gap-4 text-gray-500">
+              <a
+                href="/build"
+                className="hover:text-white transition underline underline-offset-4"
+              >
+                Build
+              </a>
+              <span className="opacity-40">|</span>
+              <a
+                href="/privacy-terms"
+                className="hover:text-white transition underline underline-offset-4"
+              >
+                Privacy
+              </a>
+            </div>
           </div>
         </div>
 

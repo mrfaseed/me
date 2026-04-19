@@ -18,6 +18,7 @@ import CommandPalette from './components/CommandPalette.jsx';
 // Lazy loaded components for performance (only for separate routes)
 const ProjectDetail = lazy(() => import('./components/ProjectDetail.jsx'));
 const Privacy = lazy(() => import('./components/PrivacyTerms.jsx'));
+const Build = lazy(() => import('./components/Build.jsx'));
 
 import useSEO from './hooks/useSEO.js';
 
@@ -146,6 +147,25 @@ const AnimatedRoutes = ({ loading, handleLoaderComplete }) => {
               <Nav />
               <Suspense fallback={<div className="min-h-screen bg-[#0a0a0c]"></div>}>
                 <Privacy />
+              </Suspense>
+              <Footer />
+            </motion.div>
+          }
+        />
+
+        {/* 🛠️ BUILD PAGE */}
+        <Route
+          path="/build"
+          element={
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Nav />
+              <Suspense fallback={<div className="min-h-screen bg-[#0a0a0c]"></div>}>
+                <Build />
               </Suspense>
               <Footer />
             </motion.div>
